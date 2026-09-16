@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Recursos e materiais do curso de Português"
+        content="Recursos e materiais do Curso de Português"
     >
 
     <style>
@@ -107,7 +107,7 @@
         }
 
         /* =========================
-           HERO / PORTADA
+           HERO / CAPA
         ========================= */
 
         .hero {
@@ -396,8 +396,6 @@
             color: #555;
 
             transition: 0.2s;
-
-            white-space: nowrap;
         }
 
         .filter-button:hover,
@@ -669,39 +667,6 @@
                 font-size: 24px;
             }
 
-            /* =========================
-               FILTROS: 3 × 2
-            ========================= */
-
-            .filters {
-                display: grid;
-
-                grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
-
-                gap: 9px;
-
-                width: 100%;
-            }
-
-            .filter-button {
-                width: 100%;
-
-                padding: 10px 5px;
-
-                font-size: 14px;
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: center;
-
-                text-align: center;
-
-                min-width: 0;
-            }
-
             .resource-grid {
                 grid-template-columns: 1fr;
             }
@@ -733,7 +698,7 @@
 <main>
 
 <!-- =========================
-     PORTADA
+     CAPA
 ========================== -->
 
 <div class="hero">
@@ -741,7 +706,7 @@
     <img
         class="hero-image"
         src="recursos/portada/IMG_3317.jpeg"
-        alt="Portada del Curso de Português"
+        alt="Capa do Curso de Português"
         onerror="this.style.display='none';"
     >
 
@@ -763,7 +728,7 @@
 </div>
 
 <!-- =========================
-     NOTICIAS
+     NOTÍCIAS
 ========================== -->
 
 <section id="noticias">
@@ -773,11 +738,11 @@
         <div>
 
             <h2 class="section-title">
-                Noticias recientes
+                Notícias recentes
             </h2>
 
             <p class="section-subtitle">
-                Novedades y avisos del curso
+                Novidades e avisos do curso
             </p>
 
         </div>
@@ -787,7 +752,7 @@
             <button
                 class="circle-button"
                 onclick="scrollNews(-1)"
-                aria-label="Noticias anteriores"
+                aria-label="Notícias anteriores"
             >
                 ←
             </button>
@@ -795,7 +760,7 @@
             <button
                 class="circle-button"
                 onclick="scrollNews(1)"
-                aria-label="Siguientes noticias"
+                aria-label="Próximas notícias"
             >
                 →
             </button>
@@ -815,7 +780,7 @@
 
                 <div class="spinner"></div>
 
-                Cargando noticias...
+                Carregando notícias...
 
             </div>
 
@@ -836,14 +801,14 @@
         <div>
 
             <h2 class="section-title">
-                Recursos del curso
+                Recursos do curso
             </h2>
 
             <p
                 id="resourceCounter"
                 class="section-subtitle"
             >
-                Cargando recursos...
+                Carregando recursos...
             </p>
 
         </div>
@@ -881,7 +846,7 @@
 
                 <div class="spinner"></div>
 
-                Cargando recursos...
+                Carregando recursos...
 
             </div>
 
@@ -902,7 +867,7 @@
 <script>
 
 /* =========================================================
-   CONFIGURACIÓN
+   CONFIGURAÇÃO
 ========================================================= */
 
 const GITHUB_USER = "iamgeolh";
@@ -912,7 +877,7 @@ const GITHUB_REPO = "curso-de-portugues";
 const GITHUB_BRANCH = "main";
 
 /*
-    ESTRUCTURA DEL REPOSITORIO
+    ESTRUTURA DO REPOSITÓRIO
 
     recursos/
     ├── portada/
@@ -922,34 +887,34 @@ const GITHUB_BRANCH = "main";
     ├── musica/
     └── video/
 
-    Cada carpeta se consulta por separado.
+    Cada pasta é consultada separadamente.
 
     IMPORTANTE:
 
-    "portada/" NO forma parte de los recursos.
+    "portada/" NÃO faz parte dos recursos.
 
-    Por tanto IMG_3317.jpeg nunca aparecerá
-    dentro de la categoría Imágenes.
+    Portanto IMG_3317.jpeg nunca aparecerá
+    dentro da categoria Imagens.
 */
 
 const RESOURCE_FOLDERS = {
 
-    "Imágenes": "recursos/imagenes",
+    "Imagens": "recursos/imagenes",
 
     "Documentos": "recursos/pdf",
 
-    "Audio": "recursos/audio",
+    "Áudio": "recursos/audio",
 
     "Música": "recursos/musica",
 
-    "Video": "recursos/video"
+    "Vídeo": "recursos/video"
 
 };
 
 const NEWS_FOLDER = "noticias";
 
 /* =========================================================
-   VARIABLES
+   VARIÁVEIS
 ========================================================= */
 
 let allResources = [];
@@ -959,7 +924,7 @@ let currentFilter = "Todos";
 let currentSearch = "";
 
 /* =========================================================
-   API DE GITHUB
+   API DO GITHUB
 ========================================================= */
 
 async function githubContents(path) {
@@ -976,7 +941,7 @@ async function githubContents(path) {
     if (!response.ok) {
 
         throw new Error(
-            `No se pudo acceder a ${path}`
+            `Não foi possível acessar ${path}`
         );
 
     }
@@ -986,7 +951,7 @@ async function githubContents(path) {
 }
 
 /* =========================================================
-   OBTENER ARCHIVOS DE UNA CARPETA
+   OBTER ARQUIVOS DE UMA PASTA
 ========================================================= */
 
 async function getFilesFromFolder(path) {
@@ -1001,7 +966,7 @@ async function getFilesFromFolder(path) {
 }
 
 /* =========================================================
-   TIPO DE ARCHIVO
+   TIPO DE ARQUIVO
 ========================================================= */
 
 function getFileType(filename) {
@@ -1029,7 +994,7 @@ function getFileType(filename) {
         ].includes(extension)
     ) {
 
-        return "Imágenes";
+        return "Imagens";
 
     }
 
@@ -1043,7 +1008,7 @@ function getFileType(filename) {
         ].includes(extension)
     ) {
 
-        return "Audio";
+        return "Áudio";
 
     }
 
@@ -1057,7 +1022,7 @@ function getFileType(filename) {
         ].includes(extension)
     ) {
 
-        return "Video";
+        return "Vídeo";
 
     }
 
@@ -1066,7 +1031,7 @@ function getFileType(filename) {
 }
 
 /* =========================================================
-   NOMBRE BONITO
+   NOME BONITO
 ========================================================= */
 
 function prettyName(filename) {
@@ -1100,7 +1065,7 @@ function prettyName(filename) {
 }
 
 /* =========================================================
-   ICONOS
+   ÍCONES
 ========================================================= */
 
 function getIcon(type) {
@@ -1110,16 +1075,16 @@ function getIcon(type) {
         case "Documentos":
             return "📄";
 
-        case "Imágenes":
+        case "Imagens":
             return "🖼️";
 
-        case "Audio":
+        case "Áudio":
             return "🎧";
 
         case "Música":
             return "🎵";
 
-        case "Video":
+        case "Vídeo":
             return "🎬";
 
         default:
@@ -1130,40 +1095,7 @@ function getIcon(type) {
 }
 
 /* =========================================================
-   ETIQUETAS DE FILTROS
-========================================================= */
-
-function getFilterLabel(type) {
-
-    switch (type) {
-
-        case "Documentos":
-            return "Docs";
-
-        case "Imágenes":
-            return "Imágenes";
-
-        case "Audio":
-            return "Audio";
-
-        case "Música":
-            return "Música";
-
-        case "Video":
-            return "Video";
-
-        case "Todos":
-            return "Todos";
-
-        default:
-            return type;
-
-    }
-
-}
-
-/* =========================================================
-   CARGAR RECURSOS
+   CARREGAR RECURSOS
 ========================================================= */
 
 async function loadResources() {
@@ -1265,7 +1197,7 @@ async function loadResources() {
             (a, b) =>
                 a.name.localeCompare(
                     b.name,
-                    "es",
+                    "pt",
                     {
                         sensitivity: "base"
                     }
@@ -1280,7 +1212,7 @@ async function loadResources() {
     catch (error) {
 
         console.error(
-            "Error cargando recursos:",
+            "Erro ao carregar recursos:",
             error
         );
 
@@ -1288,13 +1220,13 @@ async function loadResources() {
 
             <div class="message">
 
-                No se pudieron cargar los recursos.
+                Não foi possível carregar os recursos.
 
                 <br><br>
 
-                Comprueba que el repositorio de GitHub
-                sea público y que los datos de configuración
-                sean correctos.
+                Verifique se o repositório do GitHub
+                é público e se os dados de configuração
+                estão corretos.
 
             </div>
 
@@ -1303,7 +1235,7 @@ async function loadResources() {
         document.getElementById(
             "resourceCounter"
         ).textContent =
-            "No se pudieron cargar los recursos.";
+            "Não foi possível carregar os recursos.";
 
     }
 
@@ -1326,13 +1258,13 @@ function createFilters() {
 
         "Documentos",
 
-        "Imágenes",
+        "Imagens",
 
-        "Audio",
+        "Áudio",
 
         "Música",
 
-        "Video"
+        "Vídeo"
 
     ];
 
@@ -1354,7 +1286,7 @@ function createFilters() {
             );
 
         button.textContent =
-            `${getIcon(type)} ${getFilterLabel(type)}`;
+            `${getIcon(type)} ${type}`;
 
         button.onclick = () => {
 
@@ -1458,7 +1390,7 @@ function renderResources() {
         }`;
 
     /*
-        SIN RESULTADOS
+        SEM RESULTADOS
     */
 
     if (
@@ -1469,7 +1401,7 @@ function renderResources() {
 
             <div class="message">
 
-                No se encontraron recursos.
+                Nenhum recurso encontrado.
 
             </div>
 
@@ -1499,7 +1431,7 @@ function renderResources() {
 }
 
 /* =========================================================
-   CREAR TARJETA
+   CRIAR CARTÃO
 ========================================================= */
 
 function createResourceCard(
@@ -1523,11 +1455,11 @@ function createResourceCard(
         "resource-preview";
 
     /* =====================================================
-       IMÁGENES
+       IMAGENS
     ===================================================== */
 
     if (
-        resource.type === "Imágenes"
+        resource.type === "Imagens"
     ) {
 
         const image =
@@ -1561,11 +1493,11 @@ function createResourceCard(
     }
 
     /* =====================================================
-       AUDIO
+       ÁUDIO
     ===================================================== */
 
     else if (
-        resource.type === "Audio"
+        resource.type === "Áudio"
     ) {
 
         preview.innerHTML = `
@@ -1587,8 +1519,8 @@ function createResourceCard(
                         )}"
                     >
 
-                    Tu navegador no puede
-                    reproducir este audio.
+                    Seu navegador não pode
+                    reproduzir este áudio.
 
                 </audio>
 
@@ -1625,8 +1557,8 @@ function createResourceCard(
                         )}"
                     >
 
-                    Tu navegador no puede
-                    reproducir esta música.
+                    Seu navegador não pode
+                    reproduzir esta música.
 
                 </audio>
 
@@ -1637,11 +1569,11 @@ function createResourceCard(
     }
 
     /* =====================================================
-       VIDEO
+       VÍDEO
     ===================================================== */
 
     else if (
-        resource.type === "Video"
+        resource.type === "Vídeo"
     ) {
 
         const video =
@@ -1690,7 +1622,7 @@ function createResourceCard(
     }
 
     /* =====================================================
-       CONTENIDO
+       CONTEÚDO
     ===================================================== */
 
     const content =
@@ -1720,7 +1652,7 @@ function createResourceCard(
                 )}"
                 download
             >
-                Descargar
+                Baixar
             </a>
 
         `;
@@ -1728,11 +1660,11 @@ function createResourceCard(
     }
 
     /* =========================
-       IMAGEN
+       IMAGEM
     ========================= */
 
     else if (
-        resource.type === "Imágenes"
+        resource.type === "Imagens"
     ) {
 
         actions = `
@@ -1755,7 +1687,7 @@ function createResourceCard(
                 )}"
                 download
             >
-                Descargar
+                Baixar
             </a>
 
         `;
@@ -1763,11 +1695,11 @@ function createResourceCard(
     }
 
     /* =========================
-       AUDIO / MÚSICA
+       ÁUDIO / MÚSICA
     ========================= */
 
     else if (
-        resource.type === "Audio" ||
+        resource.type === "Áudio" ||
         resource.type === "Música"
     ) {
 
@@ -1780,7 +1712,7 @@ function createResourceCard(
                 )}"
                 download
             >
-                Descargar
+                Baixar
             </a>
 
         `;
@@ -1788,11 +1720,11 @@ function createResourceCard(
     }
 
     /* =========================
-       VIDEO
+       VÍDEO
     ========================= */
 
     else if (
-        resource.type === "Video"
+        resource.type === "Vídeo"
     ) {
 
         actions = `
@@ -1804,7 +1736,7 @@ function createResourceCard(
                 )}"
                 download
             >
-                Descargar
+                Baixar
             </a>
 
         `;
@@ -1918,7 +1850,7 @@ document
     );
 
 /* =========================================================
-   NOTICIAS
+   NOTÍCIAS
 ========================================================= */
 
 async function loadNews() {
@@ -1968,7 +1900,7 @@ async function loadNews() {
 
                 <div class="message">
 
-                    No hay noticias disponibles.
+                    Não há notícias disponíveis.
 
                 </div>
 
@@ -2052,7 +1984,7 @@ async function loadNews() {
     catch (error) {
 
         console.error(
-            "Error cargando noticias:",
+            "Erro ao carregar notícias:",
             error
         );
 
@@ -2060,7 +1992,7 @@ async function loadNews() {
 
             <div class="message">
 
-                No se pudieron cargar las noticias.
+                Não foi possível carregar as notícias.
 
             </div>
 
@@ -2071,7 +2003,7 @@ async function loadNews() {
 }
 
 /* =========================================================
-   FUNCIÓN PARA NOTICIAS RECURSIVAS
+   FUNÇÃO PARA NOTÍCIAS RECURSIVAS
 ========================================================= */
 
 async function getFilesRecursively(path) {
@@ -2121,7 +2053,7 @@ async function getFilesRecursively(path) {
 }
 
 /* =========================================================
-   INTERPRETAR NOTICIA
+   INTERPRETAR NOTÍCIA
 ========================================================= */
 
 function parseNews(
@@ -2188,7 +2120,7 @@ function parseNews(
 }
 
 /* =========================================================
-   CARRUSEL DE NOTICIAS
+   CARROSSEL DE NOTÍCIAS
 ========================================================= */
 
 function scrollNews(
