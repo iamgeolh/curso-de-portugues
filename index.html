@@ -7,7 +7,7 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <title>Curso de Português</title>
@@ -19,6 +19,10 @@
 
     <style>
 
+        /* =========================================================
+           RESET
+        ========================================================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -26,15 +30,37 @@
         }
 
         :root {
+
             --background: #f7f7f5;
+
             --surface: #ffffff;
+
             --text: #181818;
+
             --muted: #777777;
+
             --border: #e8e8e8;
+
             --accent: #087f5b;
+
             --accent-dark: #056044;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+
+            --accent-soft: #e9f5f0;
+
+            --shadow:
+                0 8px 30px rgba(0, 0, 0, 0.06);
+
+            --shadow-large:
+                0 25px 80px rgba(0, 0, 0, 0.18);
+
             --radius: 18px;
+
+        }
+
+        html {
+
+            scroll-behavior: smooth;
+
         }
 
         body {
@@ -48,34 +74,62 @@
                 Arial,
                 sans-serif;
 
-            background: var(--background);
+            background:
+                var(--background);
 
-            color: var(--text);
+            color:
+                var(--text);
 
-            line-height: 1.5;
+            line-height:
+                1.5;
+
+        }
+
+        body.modal-open {
+
+            overflow: hidden;
+
         }
 
         button,
         input {
+
             font: inherit;
+
+        }
+
+        button {
+
+            -webkit-tap-highlight-color:
+                transparent;
+
         }
 
         a {
-            color: inherit;
-            text-decoration: none;
+
+            color:
+                inherit;
+
+            text-decoration:
+                none;
+
         }
 
-        /* =========================
+
+        /* =========================================================
            HEADER
-        ========================= */
+        ========================================================= */
 
         header {
 
-            position: sticky;
+            position:
+                sticky;
 
-            top: 0;
+            top:
+                0;
 
-            z-index: 100;
+            z-index:
+                100;
 
             background:
                 rgba(255, 255, 255, 0.92);
@@ -83,94 +137,136 @@
             backdrop-filter:
                 blur(14px);
 
+            -webkit-backdrop-filter:
+                blur(14px);
+
             border-bottom:
                 1px solid var(--border);
+
         }
 
         .header-inner {
 
-            max-width: 1150px;
+            max-width:
+                1150px;
 
-            margin: auto;
+            margin:
+                auto;
 
-            padding: 16px 22px;
+            padding:
+                16px 22px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 20px;
+            gap:
+                20px;
+
         }
 
         .brand {
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            letter-spacing: -0.3px;
+            letter-spacing:
+                -0.3px;
+
         }
 
         .brand span {
-            color: var(--accent);
+
+            color:
+                var(--accent);
+
         }
 
-        /* =========================
+
+        /* =========================================================
            MAIN
-        ========================= */
+        ========================================================= */
 
         main {
 
-            max-width: 1150px;
+            max-width:
+                1150px;
 
-            margin: auto;
+            margin:
+                auto;
 
-            padding: 35px 22px 70px;
+            padding:
+                35px 22px 70px;
+
         }
 
-        /* =========================
-           HERO / CAPA
-        ========================= */
+
+        /* =========================================================
+           HERO
+        ========================================================= */
 
         .hero {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            min-height: 370px;
+            min-height:
+                370px;
 
-            border-radius: 28px;
+            border-radius:
+                28px;
 
-            background: #222;
+            background:
+                #222;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: flex-end;
+            align-items:
+                flex-end;
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                var(--shadow);
+
         }
 
         .hero-image {
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 0;
+            inset:
+                0;
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
+
         }
 
         .hero-overlay {
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 0;
+            inset:
+                0;
 
             background:
                 linear-gradient(
@@ -178,17 +274,23 @@
                     rgba(0, 0, 0, 0.72),
                     rgba(0, 0, 0, 0.12) 70%
                 );
+
         }
 
         .hero-content {
 
-            position: relative;
+            position:
+                relative;
 
-            z-index: 2;
+            z-index:
+                2;
 
-            padding: 40px;
+            padding:
+                40px;
 
-            color: white;
+            color:
+                white;
+
         }
 
         .hero-content h1 {
@@ -196,74 +298,103 @@
             font-size:
                 clamp(34px, 6vw, 58px);
 
-            line-height: 1;
+            line-height:
+                1;
 
-            letter-spacing: -2px;
+            letter-spacing:
+                -2px;
 
-            margin-bottom: 14px;
+            margin-bottom:
+                14px;
+
         }
 
         .hero-content p {
 
-            font-size: 17px;
+            font-size:
+                17px;
 
-            max-width: 550px;
+            max-width:
+                550px;
 
             color:
                 rgba(255,255,255,0.88);
+
         }
 
-        /* =========================
-           SECTION
-        ========================= */
+
+        /* =========================================================
+           SEÇÕES
+        ========================================================= */
 
         section {
-            margin-top: 55px;
+
+            margin-top:
+                55px;
+
         }
 
         .section-header {
 
-            display: flex;
+            display:
+                flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: end;
+            align-items:
+                end;
 
-            gap: 20px;
+            gap:
+                20px;
 
-            margin-bottom: 22px;
+            margin-bottom:
+                22px;
+
         }
 
         .section-title {
 
-            font-size: 27px;
+            font-size:
+                27px;
 
-            letter-spacing: -0.7px;
+            letter-spacing:
+                -0.7px;
+
         }
 
         .section-subtitle {
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            margin-top: 4px;
+            margin-top:
+                4px;
+
         }
 
-        /* =========================
+
+        /* =========================================================
            SEARCH
-        ========================= */
+        ========================================================= */
 
         .search-box {
 
-            position: relative;
+            position:
+                relative;
 
-            margin-bottom: 25px;
+            margin-bottom:
+                25px;
+
         }
 
         .search-box input {
 
-            width: 100%;
+            width:
+                100%;
 
             padding:
                 15px 18px 15px 48px;
@@ -271,13 +402,18 @@
             border:
                 1px solid var(--border);
 
-            border-radius: 14px;
+            border-radius:
+                14px;
 
-            background: var(--surface);
+            background:
+                var(--surface);
 
-            outline: none;
+            outline:
+                none;
 
-            transition: 0.2s;
+            transition:
+                0.2s;
+
         }
 
         .search-box input:focus {
@@ -288,56 +424,79 @@
             box-shadow:
                 0 0 0 3px
                 rgba(8, 127, 91, 0.08);
+
         }
 
         .search-icon {
 
-            position: absolute;
+            position:
+                absolute;
 
-            left: 18px;
+            left:
+                18px;
 
-            top: 50%;
+            top:
+                50%;
 
             transform:
                 translateY(-50%);
 
-            color: var(--muted);
+            color:
+                var(--muted);
+
         }
 
-        /* =========================
-           NEWS CAROUSEL
-        ========================= */
+
+        /* =========================================================
+           NOTÍCIAS
+        ========================================================= */
 
         .news-wrapper {
-            position: relative;
+
+            position:
+                relative;
+
         }
 
         .news-container {
 
-            display: flex;
+            display:
+                flex;
 
-            gap: 16px;
+            gap:
+                16px;
 
-            overflow-x: auto;
+            overflow-x:
+                auto;
 
-            scroll-behavior: smooth;
+            scroll-behavior:
+                smooth;
 
-            scrollbar-width: none;
+            scrollbar-width:
+                none;
 
             padding:
-                5px 2px 15px;
+                5px 2px 18px;
+
+            scroll-snap-type:
+                x proximity;
+
         }
 
         .news-container::-webkit-scrollbar {
-            display: none;
+
+            display:
+                none;
+
         }
 
         .news-card {
 
             flex:
-                0 0 min(360px, 85vw);
+                0 0 min(390px, 86vw);
 
-            background: var(--surface);
+            background:
+                var(--surface);
 
             border:
                 1px solid var(--border);
@@ -345,84 +504,212 @@
             border-radius:
                 var(--radius);
 
-            padding: 22px;
+            padding:
+                24px;
 
             box-shadow:
                 var(--shadow);
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            min-height: 190px;
+            min-height:
+                270px;
+
+            scroll-snap-align:
+                start;
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+
+        }
+
+        .news-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 14px 38px
+                rgba(0,0,0,0.08);
+
         }
 
         .news-date {
 
-            color: var(--accent);
+            color:
+                var(--accent);
 
-            font-size: 12px;
+            font-size:
+                12px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            letter-spacing: 0.7px;
+            letter-spacing:
+                0.7px;
 
-            margin-bottom: 10px;
+            margin-bottom:
+                11px;
+
         }
 
         .news-title {
 
-            font-size: 20px;
+            font-size:
+                22px;
 
-            line-height: 1.25;
+            line-height:
+                1.2;
 
-            margin-bottom: 10px;
+            letter-spacing:
+                -0.5px;
+
+            margin-bottom:
+                12px;
+
         }
+
+        /*
+            O texto da notícia agora é apenas
+            uma prévia.
+        */
 
         .news-text {
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 14px;
+            font-size:
+                15px;
 
-            display: -webkit-box;
+            line-height:
+                1.55;
 
-            -webkit-line-clamp: 5;
+            display:
+                -webkit-box;
 
-            -webkit-box-orient: vertical;
+            -webkit-line-clamp:
+                4;
 
-            overflow: hidden;
+            -webkit-box-orient:
+                vertical;
 
-            white-space: pre-line;
+            overflow:
+                hidden;
+
+            white-space:
+                pre-line;
+
+            flex:
+                1;
+
+        }
+
+        /*
+            Botão para abrir a notícia completa.
+        */
+
+        .news-read-button {
+
+            margin-top:
+                20px;
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            background:
+                var(--accent);
+
+            color:
+                white;
+
+            padding:
+                12px 16px;
+
+            border-radius:
+                12px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+
+            font-weight:
+                650;
+
+            transition:
+                0.2s;
+
+        }
+
+        .news-read-button:hover {
+
+            background:
+                var(--accent-dark);
+
+            transform:
+                translateY(-1px);
+
+        }
+
+        .news-read-button:active {
+
+            transform:
+                scale(0.98);
+
         }
 
         .news-controls {
 
-            display: flex;
+            display:
+                flex;
 
-            gap: 8px;
+            gap:
+                8px;
 
-            margin-top: 12px;
+            margin-top:
+                12px;
+
         }
 
         .circle-button {
 
-            width: 40px;
+            width:
+                40px;
 
-            height: 40px;
+            height:
+                40px;
 
-            border-radius: 50%;
+            flex:
+                0 0 40px;
+
+            border-radius:
+                50%;
 
             border:
                 1px solid var(--border);
 
-            background: white;
+            background:
+                white;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            transition: 0.2s;
+            transition:
+                0.2s;
+
         }
 
         .circle-button:hover {
@@ -430,26 +717,303 @@
             background:
                 var(--accent);
 
-            color: white;
+            color:
+                white;
 
             border-color:
                 var(--accent);
+
         }
 
-        /* =========================
-           RESOURCE FILTERS
-        ========================= */
+
+        /* =========================================================
+           MODAL DE NOTÍCIA
+        ========================================================= */
+
+        .news-modal {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                1000;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                rgba(10, 15, 13, 0.58);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+
+            opacity:
+                0;
+
+            visibility:
+                hidden;
+
+            pointer-events:
+                none;
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+
+        }
+
+        .news-modal.active {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+
+            pointer-events:
+                auto;
+
+        }
+
+        .news-modal-card {
+
+            width:
+                min(720px, 100%);
+
+            max-height:
+                min(82vh, 760px);
+
+            background:
+                var(--surface);
+
+            border-radius:
+                24px;
+
+            box-shadow:
+                var(--shadow-large);
+
+            overflow:
+                hidden;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            transform:
+                translateY(20px)
+                scale(0.98);
+
+            transition:
+                transform 0.25s ease;
+
+        }
+
+        .news-modal.active
+        .news-modal-card {
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+        .news-modal-header {
+
+            padding:
+                22px 24px 18px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
+            flex-shrink:
+                0;
+
+        }
+
+        .news-modal-header-content {
+
+            min-width:
+                0;
+
+        }
+
+        .news-modal-date {
+
+            color:
+                var(--accent);
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.8px;
+
+            margin-bottom:
+                7px;
+
+        }
+
+        .news-modal-title {
+
+            font-size:
+                clamp(23px, 4vw, 32px);
+
+            line-height:
+                1.15;
+
+            letter-spacing:
+                -0.8px;
+
+            overflow-wrap:
+                anywhere;
+
+        }
+
+        .news-modal-close {
+
+            flex:
+                0 0 42px;
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50%;
+
+            background:
+                #f7f7f5;
+
+            color:
+                #444;
+
+            font-size:
+                25px;
+
+            line-height:
+                1;
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            transition:
+                0.2s;
+
+        }
+
+        .news-modal-close:hover {
+
+            background:
+                var(--accent);
+
+            border-color:
+                var(--accent);
+
+            color:
+                white;
+
+        }
+
+        .news-modal-body {
+
+            overflow-y:
+                auto;
+
+            padding:
+                25px 24px 30px;
+
+            -webkit-overflow-scrolling:
+                touch;
+
+        }
+
+        .news-modal-content {
+
+            color:
+                #444;
+
+            font-size:
+                17px;
+
+            line-height:
+                1.75;
+
+            white-space:
+                pre-line;
+
+            overflow-wrap:
+                anywhere;
+
+        }
+
+
+        /* =========================================================
+           FILTROS
+        ========================================================= */
 
         .filters {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 9px;
+            gap:
+                9px;
 
-            margin-bottom: 24px;
+            margin-bottom:
+                24px;
+
         }
 
         .filter-button {
@@ -463,19 +1027,27 @@
             padding:
                 10px 8px;
 
-            min-height: 46px;
+            min-height:
+                46px;
 
-            border-radius: 999px;
+            border-radius:
+                999px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            color: #555;
+            color:
+                #555;
 
-            transition: 0.2s;
+            transition:
+                0.2s;
 
-            white-space: nowrap;
+            white-space:
+                nowrap;
 
-            text-align: center;
+            text-align:
+                center;
+
         }
 
         .filter-button:hover,
@@ -487,16 +1059,20 @@
             border-color:
                 var(--accent);
 
-            color: white;
+            color:
+                white;
+
         }
 
-        /* =========================
-           RESOURCE GRID
-        ========================= */
+
+        /* =========================================================
+           RECURSOS
+        ========================================================= */
 
         .resource-grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
@@ -504,7 +1080,9 @@
                     minmax(240px, 1fr)
                 );
 
-            gap: 17px;
+            gap:
+                17px;
+
         }
 
         .resource-card {
@@ -518,7 +1096,8 @@
             border-radius:
                 var(--radius);
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             transition:
                 transform 0.2s,
@@ -527,6 +1106,7 @@
             box-shadow:
                 0 3px 15px
                 rgba(0,0,0,0.03);
+
         }
 
         .resource-card:hover {
@@ -536,107 +1116,151 @@
 
             box-shadow:
                 var(--shadow);
+
         }
 
         .resource-preview {
 
-            height: 145px;
+            height:
+                145px;
 
-            background: #f1f1ef;
+            background:
+                #f1f1ef;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            overflow: hidden;
+            overflow:
+                hidden;
+
         }
 
         .resource-preview img {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
 
-            cursor: pointer;
+            cursor:
+                pointer;
+
         }
 
         .resource-preview video {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
+
         }
 
         .resource-icon {
-            font-size: 43px;
+
+            font-size:
+                43px;
+
         }
 
         .resource-content {
 
-            padding: 18px;
+            padding:
+                18px;
+
         }
 
         .resource-type {
 
-            font-size: 11px;
+            font-size:
+                11px;
 
             color:
                 var(--accent);
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            letter-spacing: 0.7px;
+            letter-spacing:
+                0.7px;
 
-            margin-bottom: 5px;
+            margin-bottom:
+                5px;
+
         }
 
         .resource-name {
 
-            font-size: 17px;
+            font-size:
+                17px;
 
-            font-weight: 650;
+            font-weight:
+                650;
 
-            overflow-wrap: anywhere;
+            overflow-wrap:
+                anywhere;
 
-            margin-bottom: 15px;
+            margin-bottom:
+                15px;
+
         }
 
         .resource-actions {
 
-            display: flex;
+            display:
+                flex;
 
-            gap: 8px;
+            gap:
+                8px;
+
         }
 
         .resource-button {
 
-            flex: 1;
+            flex:
+                1;
 
             border:
                 1px solid var(--border);
 
-            background: white;
+            background:
+                white;
 
             padding:
                 9px 10px;
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            text-align: center;
+            text-align:
+                center;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            transition: 0.2s;
+            transition:
+                0.2s;
+
         }
 
         .resource-button.primary {
@@ -644,50 +1268,68 @@
             background:
                 var(--accent);
 
-            color: white;
+            color:
+                white;
 
             border-color:
                 var(--accent);
+
         }
 
         .resource-button:hover {
-            opacity: 0.86;
+
+            opacity:
+                0.86;
+
         }
 
-        /* =========================
+
+        /* =========================================================
            ÁUDIO / MÚSICA
-        ========================= */
+        ========================================================= */
 
         .audio-preview {
 
-            width: 100%;
+            width:
+                100%;
 
-            padding: 18px;
+            padding:
+                18px;
+
         }
 
         .audio-icon {
 
-            text-align: center;
+            text-align:
+                center;
 
-            font-size: 38px;
+            font-size:
+                38px;
 
-            margin-bottom: 12px;
+            margin-bottom:
+                12px;
+
         }
 
         .audio-preview audio {
-            width: 100%;
+
+            width:
+                100%;
+
         }
 
-        /* =========================
-           EMPTY / LOADING
-        ========================= */
+
+        /* =========================================================
+           MENSAGENS
+        ========================================================= */
 
         .message {
 
             padding:
                 35px 20px;
 
-            text-align: center;
+            text-align:
+                center;
 
             color:
                 var(--muted);
@@ -700,24 +1342,32 @@
 
             border-radius:
                 var(--radius);
+
         }
 
         .loading {
 
-            display: flex;
+            display:
+                flex;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 10px;
+            gap:
+                10px;
+
         }
 
         .spinner {
 
-            width: 18px;
+            width:
+                18px;
 
-            height: 18px;
+            height:
+                18px;
 
             border:
                 2px solid #ddd;
@@ -725,33 +1375,40 @@
             border-top-color:
                 var(--accent);
 
-            border-radius: 50%;
+            border-radius:
+                50%;
 
             animation:
                 spin 0.7s linear infinite;
+
         }
 
         @keyframes spin {
 
             to {
+
                 transform:
                     rotate(360deg);
+
             }
 
         }
 
-        /* =========================
+
+        /* =========================================================
            FOOTER
-        ========================= */
+        ========================================================= */
 
         footer {
 
             border-top:
                 1px solid var(--border);
 
-            background: white;
+            background:
+                white;
 
-            text-align: center;
+            text-align:
+                center;
 
             padding:
                 25px 20px;
@@ -759,12 +1416,15 @@
             color:
                 var(--muted);
 
-            font-size: 13px;
+            font-size:
+                13px;
+
         }
 
-        /* =========================
+
+        /* =========================================================
            RESPONSIVE
-        ========================= */
+        ========================================================= */
 
         @media (max-width: 600px) {
 
@@ -772,36 +1432,49 @@
 
                 padding:
                     20px 14px 50px;
+
             }
 
             .hero {
 
-                min-height: 330px;
+                min-height:
+                    330px;
 
-                border-radius: 22px;
+                border-radius:
+                    22px;
+
             }
 
             .hero-content {
-                padding: 25px;
+
+                padding:
+                    25px;
+
             }
 
             .hero-content h1 {
 
                 letter-spacing:
                     -1.5px;
+
             }
 
             section {
-                margin-top: 40px;
+
+                margin-top:
+                    40px;
+
             }
 
             .section-title {
-                font-size: 24px;
+
+                font-size:
+                    24px;
+
             }
 
             /*
-                Mantemos exatamente
-                3 filtros por linha:
+                Exatamente 3 filtros por linha:
                 3 + 3
             */
 
@@ -810,7 +1483,9 @@
                 grid-template-columns:
                     repeat(3, 1fr);
 
-                gap: 8px;
+                gap:
+                    8px;
+
             }
 
             .filter-button {
@@ -818,19 +1493,107 @@
                 padding:
                     9px 5px;
 
-                font-size: 14px;
+                font-size:
+                    14px;
 
-                min-width: 0;
+                min-width:
+                    0;
+
             }
 
             .resource-grid {
 
                 grid-template-columns:
                     1fr;
+
             }
 
             .resource-preview {
-                height: 170px;
+
+                height:
+                    170px;
+
+            }
+
+            .news-card {
+
+                flex-basis:
+                    88vw;
+
+                padding:
+                    22px;
+
+                min-height:
+                    260px;
+
+            }
+
+            .news-title {
+
+                font-size:
+                    21px;
+
+            }
+
+            /*
+                Modal no iPhone
+            */
+
+            .news-modal {
+
+                padding:
+                    12px;
+
+                align-items:
+                    flex-end;
+
+            }
+
+            .news-modal-card {
+
+                max-height:
+                    88vh;
+
+                border-radius:
+                    22px 22px 16px 16px;
+
+            }
+
+            .news-modal-header {
+
+                padding:
+                    19px 18px 16px;
+
+            }
+
+            .news-modal-body {
+
+                padding:
+                    20px 18px 28px;
+
+            }
+
+            .news-modal-content {
+
+                font-size:
+                    16px;
+
+                line-height:
+                    1.7;
+
+            }
+
+            .news-modal-close {
+
+                flex-basis:
+                    40px;
+
+                width:
+                    40px;
+
+                height:
+                    40px;
+
             }
 
         }
@@ -839,7 +1602,9 @@
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -856,11 +1621,13 @@
 
 </header>
 
+
 <main>
 
-<!-- =========================
+
+<!-- =========================================================
      CAPA
-========================== -->
+========================================================== -->
 
 <div class="hero">
 
@@ -888,9 +1655,10 @@
 
 </div>
 
-<!-- =========================
+
+<!-- =========================================================
      NOTÍCIAS
-========================== -->
+========================================================== -->
 
 <section id="noticias">
 
@@ -930,6 +1698,7 @@
 
     </div>
 
+
     <div
         id="newsContainer"
         class="news-container"
@@ -951,9 +1720,10 @@
 
 </section>
 
-<!-- =========================
+
+<!-- =========================================================
      RECURSOS
-========================== -->
+========================================================== -->
 
 <section id="recursos">
 
@@ -976,6 +1746,7 @@
 
     </div>
 
+
     <div class="search-box">
 
         <span class="search-icon">
@@ -991,10 +1762,12 @@
 
     </div>
 
+
     <div
         id="filters"
         class="filters"
     ></div>
+
 
     <div
         id="resourceGrid"
@@ -1017,7 +1790,9 @@
 
 </section>
 
+
 </main>
+
 
 <footer>
 
@@ -1025,20 +1800,81 @@
 
 </footer>
 
+
+<!-- =========================================================
+     MODAL DA NOTÍCIA
+========================================================== -->
+
+<div
+    id="newsModal"
+    class="news-modal"
+    aria-hidden="true"
+>
+
+    <article class="news-modal-card">
+
+        <header class="news-modal-header">
+
+            <div class="news-modal-header-content">
+
+                <div
+                    id="newsModalDate"
+                    class="news-modal-date"
+                ></div>
+
+                <h2
+                    id="newsModalTitle"
+                    class="news-modal-title"
+                ></h2>
+
+            </div>
+
+
+            <button
+                id="newsModalClose"
+                class="news-modal-close"
+                type="button"
+                aria-label="Fechar notícia"
+            >
+                ×
+            </button>
+
+        </header>
+
+
+        <div class="news-modal-body">
+
+            <div
+                id="newsModalContent"
+                class="news-modal-content"
+            ></div>
+
+        </div>
+
+    </article>
+
+</div>
+
+
 <script>
+
 
 /* =========================================================
    CONFIGURAÇÃO
 ========================================================= */
 
-const GITHUB_USER = "iamgeolh";
+const GITHUB_USER =
+    "iamgeolh";
 
-const GITHUB_REPO = "curso-de-portugues";
+const GITHUB_REPO =
+    "curso-de-portugues";
 
-const GITHUB_BRANCH = "main";
+const GITHUB_BRANCH =
+    "main";
+
 
 /*
-    ESTRUTURA DO REPOSITÓRIO
+    Estrutura:
 
     recursos/
     ├── portada/
@@ -1048,15 +1884,9 @@ const GITHUB_BRANCH = "main";
     ├── musica/
     └── video/
 
-    Cada pasta é consultada separadamente.
-
-    IMPORTANTE:
-
-    "portada/" NÃO faz parte dos recursos.
-
-    Portanto IMG_3317.jpeg nunca aparecerá
-    dentro da categoria Imagens.
+    noticias/
 */
+
 
 const RESOURCE_FOLDERS = {
 
@@ -1077,7 +1907,10 @@ const RESOURCE_FOLDERS = {
 
 };
 
-const NEWS_FOLDER = "noticias";
+
+const NEWS_FOLDER =
+    "noticias";
+
 
 /* =========================================================
    VARIÁVEIS
@@ -1085,12 +1918,15 @@ const NEWS_FOLDER = "noticias";
 
 let allResources = [];
 
-let currentFilter = "Todos";
+let currentFilter =
+    "Todos";
 
-let currentSearch = "";
+let currentSearch =
+    "";
+
 
 /* =========================================================
-   API DO GITHUB
+   API GITHUB
 ========================================================= */
 
 async function githubContents(path) {
@@ -1116,8 +1952,9 @@ async function githubContents(path) {
 
 }
 
+
 /* =========================================================
-   OBTER ARQUIVOS DE UMA PASTA
+   ARQUIVOS DE UMA PASTA
 ========================================================= */
 
 async function getFilesFromFolder(path) {
@@ -1132,6 +1969,7 @@ async function getFilesFromFolder(path) {
 
 }
 
+
 /* =========================================================
    TIPO DE ARQUIVO
 ========================================================= */
@@ -1144,11 +1982,15 @@ function getFileType(filename) {
             .pop()
             .toLowerCase();
 
-    if (extension === "pdf") {
+
+    if (
+        extension === "pdf"
+    ) {
 
         return "Documentos";
 
     }
+
 
     if (
         [
@@ -1165,6 +2007,7 @@ function getFileType(filename) {
 
     }
 
+
     if (
         [
             "mp3",
@@ -1178,6 +2021,7 @@ function getFileType(filename) {
         return "Áudio";
 
     }
+
 
     if (
         [
@@ -1193,9 +2037,11 @@ function getFileType(filename) {
 
     }
 
+
     return null;
 
 }
+
 
 /* =========================================================
    NOME BONITO
@@ -1208,17 +2054,20 @@ function prettyName(filename) {
             .split("/")
             .pop();
 
+
     name =
         name.replace(
             /\.[^/.]+$/,
             ""
         );
 
+
     name =
         name.replace(
             /[-_]+/g,
             " "
         );
+
 
     name =
         name.replace(
@@ -1227,9 +2076,11 @@ function prettyName(filename) {
                 letter.toUpperCase()
         );
 
+
     return name;
 
 }
+
 
 /* =========================================================
    ÍCONES
@@ -1261,8 +2112,9 @@ function getIcon(type) {
 
 }
 
+
 /* =========================================================
-   NOME VISÍVEL DO TIPO
+   NOME VISÍVEL
 ========================================================= */
 
 function getDisplayType(type) {
@@ -1291,6 +2143,7 @@ function getDisplayType(type) {
 
 }
 
+
 /* =========================================================
    CARREGAR RECURSOS
 ========================================================= */
@@ -1302,12 +2155,14 @@ async function loadResources() {
             "resourceGrid"
         );
 
+
     try {
 
         const folderEntries =
             Object.entries(
                 RESOURCE_FOLDERS
             );
+
 
         const results =
             await Promise.all(
@@ -1321,6 +2176,7 @@ async function loadResources() {
                                 folder
                             );
 
+
                         return files
 
                             .map(file => {
@@ -1330,12 +2186,10 @@ async function loadResources() {
                                         file.name
                                     );
 
-                                /*
-                                    Áudio
-                                */
 
                                 if (
-                                    type === "Áudio"
+                                    type ===
+                                    "Áudio"
                                 ) {
 
                                     if (
@@ -1349,12 +2203,10 @@ async function loadResources() {
 
                                 }
 
-                                /*
-                                    Vídeo
-                                */
 
                                 if (
-                                    type === "Vídeo"
+                                    type ===
+                                    "Vídeo"
                                 ) {
 
                                     if (
@@ -1368,12 +2220,10 @@ async function loadResources() {
 
                                 }
 
-                                /*
-                                    Imagens
-                                */
 
                                 if (
-                                    type === "Imagens"
+                                    type ===
+                                    "Imagens"
                                 ) {
 
                                     if (
@@ -1387,12 +2237,10 @@ async function loadResources() {
 
                                 }
 
-                                /*
-                                    Documentos
-                                */
 
                                 if (
-                                    type === "Documentos"
+                                    type ===
+                                    "Documentos"
                                 ) {
 
                                     if (
@@ -1406,12 +2254,10 @@ async function loadResources() {
 
                                 }
 
-                                /*
-                                    Música
-                                */
 
                                 if (
-                                    type === "Música"
+                                    type ===
+                                    "Música"
                                 ) {
 
                                     const extension =
@@ -1419,6 +2265,7 @@ async function loadResources() {
                                             .split(".")
                                             .pop()
                                             .toLowerCase();
+
 
                                     if (
                                         ![
@@ -1437,6 +2284,7 @@ async function loadResources() {
                                     }
 
                                 }
+
 
                                 return {
 
@@ -1472,8 +2320,10 @@ async function loadResources() {
 
             );
 
+
         allResources =
             results.flat();
+
 
         allResources.sort(
 
@@ -1489,11 +2339,13 @@ async function loadResources() {
 
         );
 
+
         createFilters();
 
         renderResources();
 
     }
+
 
     catch (error) {
 
@@ -1501,6 +2353,7 @@ async function loadResources() {
             "Erro ao carregar recursos:",
             error
         );
+
 
         grid.innerHTML = `
 
@@ -1518,6 +2371,7 @@ async function loadResources() {
 
         `;
 
+
         document.getElementById(
             "resourceCounter"
         ).textContent =
@@ -1526,6 +2380,7 @@ async function loadResources() {
     }
 
 }
+
 
 /* =========================================================
    FILTROS
@@ -1538,17 +2393,6 @@ function createFilters() {
             "filters"
         );
 
-    /*
-        IMPORTANTE:
-
-        São exatamente 6 opções.
-
-        Linha 1:
-        Todos | Docs | Imagens
-
-        Linha 2:
-        Áudio | Música | Vídeo
-    */
 
     const types = [
 
@@ -1566,7 +2410,10 @@ function createFilters() {
 
     ];
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
+
 
     types.forEach(type => {
 
@@ -1574,6 +2421,7 @@ function createFilters() {
             document.createElement(
                 "button"
             );
+
 
         button.className =
             "filter-button" +
@@ -1583,17 +2431,16 @@ function createFilters() {
                     : ""
             );
 
-        /*
-            Texto visível
-        */
 
         let visibleName;
+
 
         if (
             type === "Todos"
         ) {
 
-            visibleName = "Todos";
+            visibleName =
+                "Todos";
 
         }
 
@@ -1606,13 +2453,16 @@ function createFilters() {
 
         }
 
+
         button.textContent =
             `${getIcon(type)} ${visibleName}`;
+
 
         button.onclick = () => {
 
             currentFilter =
                 type;
+
 
             document
                 .querySelectorAll(
@@ -1624,13 +2474,16 @@ function createFilters() {
                     )
                 );
 
+
             button.classList.add(
                 "active"
             );
 
+
             renderResources();
 
         };
+
 
         container.appendChild(
             button
@@ -1639,6 +2492,7 @@ function createFilters() {
     });
 
 }
+
 
 /* =========================================================
    MOSTRAR RECURSOS
@@ -1651,15 +2505,14 @@ function renderResources() {
             "resourceGrid"
         );
 
+
     let resources =
         [...allResources];
 
-    /*
-        FILTRO POR TIPO
-    */
 
     if (
-        currentFilter !== "Todos"
+        currentFilter !==
+        "Todos"
     ) {
 
         resources =
@@ -1671,18 +2524,17 @@ function renderResources() {
 
     }
 
-    /*
-        BUSCA
-    */
 
     if (
-        currentSearch.trim() !== ""
+        currentSearch.trim() !==
+        ""
     ) {
 
         const search =
             currentSearch
                 .toLowerCase()
                 .trim();
+
 
         resources =
             resources.filter(
@@ -1694,9 +2546,6 @@ function renderResources() {
 
     }
 
-    /*
-        CONTADOR
-    */
 
     document.getElementById(
         "resourceCounter"
@@ -1710,12 +2559,10 @@ function renderResources() {
                 : "s"
         }`;
 
-    /*
-        SEM RESULTADOS
-    */
 
     if (
-        resources.length === 0
+        resources.length ===
+        0
     ) {
 
         grid.innerHTML = `
@@ -1732,7 +2579,10 @@ function renderResources() {
 
     }
 
-    grid.innerHTML = "";
+
+    grid.innerHTML =
+        "";
+
 
     resources.forEach(
         resource => {
@@ -1741,6 +2591,7 @@ function renderResources() {
                 createResourceCard(
                     resource
                 );
+
 
             grid.appendChild(
                 card
@@ -1751,8 +2602,9 @@ function renderResources() {
 
 }
 
+
 /* =========================================================
-   CRIAR CARTÃO
+   CARTÃO DE RECURSO
 ========================================================= */
 
 function createResourceCard(
@@ -1764,19 +2616,23 @@ function createResourceCard(
             "article"
         );
 
+
     card.className =
         "resource-card";
+
 
     const preview =
         document.createElement(
             "div"
         );
 
+
     preview.className =
         "resource-preview";
 
+
     /* =====================================================
-       IMAGENS
+       IMAGEM
     ===================================================== */
 
     if (
@@ -1789,14 +2645,18 @@ function createResourceCard(
                 "img"
             );
 
+
         image.src =
             resource.rawUrl;
+
 
         image.alt =
             resource.name;
 
+
         image.loading =
             "lazy";
+
 
         image.onclick = () => {
 
@@ -1808,11 +2668,13 @@ function createResourceCard(
 
         };
 
+
         preview.appendChild(
             image
         );
 
     }
+
 
     /* =====================================================
        ÁUDIO
@@ -1853,6 +2715,7 @@ function createResourceCard(
 
     }
 
+
     /* =====================================================
        MÚSICA
     ===================================================== */
@@ -1892,6 +2755,7 @@ function createResourceCard(
 
     }
 
+
     /* =====================================================
        VÍDEO
     ===================================================== */
@@ -1906,25 +2770,31 @@ function createResourceCard(
                 "video"
             );
 
+
         video.src =
             resource.rawUrl;
+
 
         video.controls =
             true;
 
+
         video.preload =
             "metadata";
+
 
         video.setAttribute(
             "playsinline",
             ""
         );
 
+
         preview.appendChild(
             video
         );
 
     }
+
 
     /* =====================================================
        DOCUMENTOS
@@ -1946,6 +2816,7 @@ function createResourceCard(
 
     }
 
+
     /* =====================================================
        CONTEÚDO
     ===================================================== */
@@ -1955,14 +2826,16 @@ function createResourceCard(
             "div"
         );
 
+
     content.className =
         "resource-content";
 
-    let actions = "";
 
-    /* =========================
-       DOCUMENTOS
-    ========================= */
+    let actions =
+        "";
+
+
+    /* DOCUMENTOS */
 
     if (
         resource.type ===
@@ -1985,9 +2858,8 @@ function createResourceCard(
 
     }
 
-    /* =========================
-       IMAGEM
-    ========================= */
+
+    /* IMAGENS */
 
     else if (
         resource.type ===
@@ -2021,9 +2893,8 @@ function createResourceCard(
 
     }
 
-    /* =========================
-       ÁUDIO / MÚSICA
-    ========================= */
+
+    /* ÁUDIO / MÚSICA */
 
     else if (
         resource.type === "Áudio" ||
@@ -2046,9 +2917,8 @@ function createResourceCard(
 
     }
 
-    /* =========================
-       VÍDEO
-    ========================= */
+
+    /* VÍDEO */
 
     else if (
         resource.type ===
@@ -2071,6 +2941,7 @@ function createResourceCard(
 
     }
 
+
     content.innerHTML = `
 
         <div class="resource-type">
@@ -2087,6 +2958,7 @@ function createResourceCard(
 
         </div>
 
+
         <div class="resource-name">
 
             ${escapeHTML(
@@ -2094,6 +2966,7 @@ function createResourceCard(
             )}
 
         </div>
+
 
         <div class="resource-actions">
 
@@ -2103,17 +2976,21 @@ function createResourceCard(
 
     `;
 
+
     card.appendChild(
         preview
     );
+
 
     card.appendChild(
         content
     );
 
+
     return card;
 
 }
+
 
 /* =========================================================
    ESCAPAR HTML
@@ -2126,12 +3003,15 @@ function escapeHTML(text) {
             "div"
         );
 
+
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
 }
+
 
 /* =========================================================
    ESCAPAR ATRIBUTOS
@@ -2163,6 +3043,7 @@ function escapeAttribute(text) {
 
 }
 
+
 /* =========================================================
    BUSCA
 ========================================================= */
@@ -2178,10 +3059,12 @@ document
             currentSearch =
                 event.target.value;
 
+
             renderResources();
 
         }
     );
+
 
 /* =========================================================
    NOTÍCIAS
@@ -2194,12 +3077,14 @@ async function loadNews() {
             "newsContainer"
         );
 
+
     try {
 
         const files =
             await getFilesRecursively(
                 NEWS_FOLDER
             );
+
 
         const textFiles =
             files.filter(
@@ -2211,6 +3096,7 @@ async function loadNews() {
                             .pop()
                             .toLowerCase();
 
+
                     return (
                         extension ===
                         "txt"
@@ -2219,17 +3105,10 @@ async function loadNews() {
                 }
             );
 
-        textFiles.sort(
-
-            (a, b) =>
-                b.name.localeCompare(
-                    a.name
-                )
-
-        );
 
         if (
-            textFiles.length === 0
+            textFiles.length ===
+            0
         ) {
 
             container.innerHTML = `
@@ -2246,75 +3125,110 @@ async function loadNews() {
 
         }
 
-        container.innerHTML = "";
+
+        /*
+            Primeiro carregamos todas
+            as notícias.
+        */
+
+        const newsList =
+            [];
+
 
         for (
             const file
             of textFiles
         ) {
 
-            const rawUrl =
-                `https://raw.githubusercontent.com/` +
-                `${GITHUB_USER}/` +
-                `${GITHUB_REPO}/` +
-                `${GITHUB_BRANCH}/` +
-                `${file.path}`;
+            try {
 
-            const response =
-                await fetch(
-                    rawUrl
+                const rawUrl =
+                    `https://raw.githubusercontent.com/` +
+                    `${GITHUB_USER}/` +
+                    `${GITHUB_REPO}/` +
+                    `${GITHUB_BRANCH}/` +
+                    `${file.path}`;
+
+
+                const response =
+                    await fetch(
+                        rawUrl
+                    );
+
+
+                if (
+                    !response.ok
+                ) {
+
+                    continue;
+
+                }
+
+
+                const text =
+                    await response.text();
+
+
+                const news =
+                    parseNews(
+                        text,
+                        file.name
+                    );
+
+
+                news.rawUrl =
+                    rawUrl;
+
+
+                newsList.push(
+                    news
                 );
 
-            const text =
-                await response.text();
+            }
 
-            const news =
-                parseNews(
-                    text,
-                    file.name
+            catch (error) {
+
+                console.error(
+                    "Erro ao carregar notícia:",
+                    file.name,
+                    error
                 );
 
-            const card =
-                document.createElement(
-                    "article"
-                );
-
-            card.className =
-                "news-card";
-
-            card.innerHTML = `
-
-                <div class="news-date">
-
-                    ${escapeHTML(
-                        news.date
-                    )}
-
-                </div>
-
-                <h3 class="news-title">
-
-                    ${escapeHTML(
-                        news.title
-                    )}
-
-                </h3>
-
-                <p class="news-text">
-
-                    ${escapeHTML(
-                        news.content
-                    )}
-
-                </p>
-
-            `;
-
-            container.appendChild(
-                card
-            );
+            }
 
         }
+
+
+        /*
+            Ordenar pela data real,
+            quando disponível.
+        */
+
+        newsList.sort(
+            sortNewsByDate
+        );
+
+
+        container.innerHTML =
+            "";
+
+
+        newsList.forEach(
+            news => {
+
+                const card =
+                    createNewsCard(
+                        news
+                    );
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
 
     }
 
@@ -2324,6 +3238,7 @@ async function loadNews() {
             "Erro ao carregar notícias:",
             error
         );
+
 
         container.innerHTML = `
 
@@ -2339,6 +3254,443 @@ async function loadNews() {
 
 }
 
+
+/* =========================================================
+   CRIAR CARTÃO DE NOTÍCIA
+========================================================= */
+
+function createNewsCard(news) {
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "news-card";
+
+
+    card.innerHTML = `
+
+        <div class="news-date">
+
+            ${escapeHTML(
+                news.date
+            )}
+
+        </div>
+
+
+        <h3 class="news-title">
+
+            ${escapeHTML(
+                news.title
+            )}
+
+        </h3>
+
+
+        <p class="news-text">
+
+            ${escapeHTML(
+                news.content
+            )}
+
+        </p>
+
+
+        <button
+            class="news-read-button"
+            type="button"
+        >
+            Ler notícia completa
+        </button>
+
+    `;
+
+
+    const button =
+        card.querySelector(
+            ".news-read-button"
+        );
+
+
+    /*
+        Abrir a notícia completa
+        ao clicar no botão.
+    */
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            openNewsModal(
+                news
+            );
+
+        }
+    );
+
+
+    /*
+        Também permite tocar no
+        título/cartão para abrir.
+    */
+
+    card.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                button
+            ) {
+
+                return;
+
+            }
+
+            openNewsModal(
+                news
+            );
+
+        }
+    );
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   ORDENAR NOTÍCIAS POR DATA
+========================================================= */
+
+function sortNewsByDate(a, b) {
+
+    const dateA =
+        parseNewsDate(
+            a.date
+        );
+
+
+    const dateB =
+        parseNewsDate(
+            b.date
+        );
+
+
+    if (
+        dateA &&
+        dateB
+    ) {
+
+        return (
+            dateB.getTime() -
+            dateA.getTime()
+        );
+
+    }
+
+
+    if (
+        dateA
+    ) {
+
+        return -1;
+
+    }
+
+
+    if (
+        dateB
+    ) {
+
+        return 1;
+
+    }
+
+
+    return (
+        a.title.localeCompare(
+            b.title,
+            "pt",
+            {
+                sensitivity:
+                    "base"
+            }
+        )
+    );
+
+}
+
+
+/* =========================================================
+   CONVERTER DATA DA NOTÍCIA
+========================================================= */
+
+function parseNewsDate(value) {
+
+    if (
+        !value
+    ) {
+
+        return null;
+
+    }
+
+
+    const text =
+        value.trim();
+
+
+    /*
+        Formato:
+
+        DD/MM/AAAA
+    */
+
+    const match =
+        text.match(
+            /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+        );
+
+
+    if (
+        match
+    ) {
+
+        const day =
+            Number(
+                match[1]
+            );
+
+
+        const month =
+            Number(
+                match[2]
+            );
+
+
+        const year =
+            Number(
+                match[3]
+            );
+
+
+        const date =
+            new Date(
+                year,
+                month - 1,
+                day
+            );
+
+
+        if (
+            !isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return date;
+
+        }
+
+    }
+
+
+    /*
+        Caso o arquivo use
+        outro formato reconhecido
+        pelo JavaScript.
+    */
+
+    const fallback =
+        new Date(
+            text
+        );
+
+
+    if (
+        !isNaN(
+            fallback.getTime()
+        )
+    ) {
+
+        return fallback;
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   ABRIR MODAL
+========================================================= */
+
+function openNewsModal(news) {
+
+    const modal =
+        document.getElementById(
+            "newsModal"
+        );
+
+
+    const title =
+        document.getElementById(
+            "newsModalTitle"
+        );
+
+
+    const date =
+        document.getElementById(
+            "newsModalDate"
+        );
+
+
+    const content =
+        document.getElementById(
+            "newsModalContent"
+        );
+
+
+    title.textContent =
+        news.title;
+
+
+    date.textContent =
+        news.date;
+
+
+    content.textContent =
+        news.content;
+
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    /*
+        Começar sempre no início
+        da notícia.
+    */
+
+    document
+        .querySelector(
+            ".news-modal-body"
+        )
+        .scrollTop = 0;
+
+}
+
+
+/* =========================================================
+   FECHAR MODAL
+========================================================= */
+
+function closeNewsModal() {
+
+    const modal =
+        document.getElementById(
+            "newsModal"
+        );
+
+
+    modal.classList.remove(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   BOTÃO FECHAR
+========================================================= */
+
+document
+    .getElementById(
+        "newsModalClose"
+    )
+    .addEventListener(
+        "click",
+        closeNewsModal
+    );
+
+
+/* =========================================================
+   TOCAR FORA DA NOTÍCIA
+========================================================= */
+
+document
+    .getElementById(
+        "newsModal"
+    )
+    .addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target.id ===
+                "newsModal"
+            ) {
+
+                closeNewsModal();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   TECLA ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeNewsModal();
+
+        }
+
+    }
+);
+
+
 /* =========================================================
    FUNÇÃO PARA NOTÍCIAS RECURSIVAS
 ========================================================= */
@@ -2350,7 +3702,9 @@ async function getFilesRecursively(path) {
             path
         );
 
+
     let files = [];
+
 
     for (
         const item
@@ -2368,6 +3722,7 @@ async function getFilesRecursively(path) {
 
         }
 
+
         else if (
             item.type ===
             "dir"
@@ -2378,6 +3733,7 @@ async function getFilesRecursively(path) {
                     item.path
                 );
 
+
             files =
                 files.concat(
                     children
@@ -2387,9 +3743,11 @@ async function getFilesRecursively(path) {
 
     }
 
+
     return files;
 
 }
+
 
 /* =========================================================
    INTERPRETAR NOTÍCIA
@@ -2405,16 +3763,25 @@ function parseNews(
             /\r?\n/
         );
 
+
     let title =
         prettyName(
             filename
         );
 
+
     let date =
         "";
 
+
     let content =
         text.trim();
+
+
+    /*
+        Linha 1:
+        título
+    */
 
     if (
         lines.length > 0
@@ -2425,6 +3792,12 @@ function parseNews(
 
     }
 
+
+    /*
+        Linha 2:
+        data
+    */
+
     if (
         lines.length > 1
     ) {
@@ -2433,6 +3806,12 @@ function parseNews(
             lines[1].trim();
 
     }
+
+
+    /*
+        Linha 3 em diante:
+        conteúdo completo
+    */
 
     if (
         lines.length > 2
@@ -2446,6 +3825,7 @@ function parseNews(
 
     }
 
+
     return {
 
         title,
@@ -2457,6 +3837,7 @@ function parseNews(
     };
 
 }
+
 
 /* =========================================================
    CARROSSEL DE NOTÍCIAS
@@ -2471,14 +3852,17 @@ function scrollNews(
             "newsContainer"
         );
 
+
     const amount =
         container.clientWidth *
         0.8;
 
+
     container.scrollBy({
 
         left:
-            amount * direction,
+            amount *
+            direction,
 
         behavior:
             "smooth"
@@ -2486,6 +3870,7 @@ function scrollNews(
     });
 
 }
+
 
 /* =========================================================
    INICIAR
@@ -2495,7 +3880,9 @@ loadResources();
 
 loadNews();
 
+
 </script>
+
 
 </body>
 
