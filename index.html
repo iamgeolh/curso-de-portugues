@@ -547,7 +547,7 @@
         }
 
         /* =========================
-           AUDIO
+           AUDIO / MÚSICA
         ========================= */
 
         .audio-preview {
@@ -887,21 +887,24 @@ const GITHUB_BRANCH = "main";
 
 
 /*
-    ESTRUCTURA REAL DEL REPOSITORIO
+    ESTRUCTURA DEL REPOSITORIO
 
     recursos/
     ├── portada/
     ├── imagenes/
     ├── pdf/
     ├── audio/
+    ├── musica/
     └── video/
-
-    IMPORTANTE:
 
     Cada carpeta se consulta por separado.
 
-    Esto evita que portada/ termine apareciendo
-    dentro de Imágenes.
+    IMPORTANTE:
+
+    "portada/" NO forma parte de los recursos.
+
+    Por tanto IMG_3317.jpeg nunca aparecerá
+    dentro de la categoría Imágenes.
 */
 
 const RESOURCE_FOLDERS = {
@@ -911,6 +914,8 @@ const RESOURCE_FOLDERS = {
     "PDF": "recursos/pdf",
 
     "Audio": "recursos/audio",
+
+    "Música": "recursos/musica",
 
     "Video": "recursos/video"
 
@@ -962,19 +967,6 @@ async function githubContents(path) {
 /* =========================================================
    OBTENER ARCHIVOS DE UNA CARPETA
 ========================================================= */
-
-/*
-    Esta función solamente obtiene archivos
-    pertenecientes a la carpeta indicada.
-
-    NO empieza desde "recursos".
-
-    Por lo tanto:
-
-    recursos/portada/IMG_3317.jpeg
-
-    nunca será considerado una imagen del curso.
-*/
 
 async function getFilesFromFolder(path) {
 
@@ -1115,6 +1107,9 @@ function getIcon(type) {
         case "Audio":
             return "🎧";
 
+        case "Música":
+            return "🎵";
+
         case "Video":
             return "🎬";
 
@@ -1140,19 +1135,6 @@ async function loadResources() {
 
     try {
 
-        /*
-            IMPORTANTE:
-
-            Se consultan las carpetas
-            individualmente.
-
-            Ya NO hacemos:
-
-            getFilesRecursively("recursos")
-
-            porque eso incluía portada/.
-        */
-
         const folderEntries =
             Object.entries(
                 RESOURCE_FOLDERS
@@ -1173,21 +1155,53 @@ async function loadResources() {
                         return files
                             .map(file => {
 
-                                /*
-                                    Verificación adicional:
-                                    solamente aceptamos
-                                    archivos cuyo tipo
-                                    corresponda a la carpeta.
-                                */
-
                                 const detectedType =
                                     getFileType(
                                         file.name
                                     );
 
 
+                                /*
+                                    Las carpetas Audio y Música
+                                    utilizan los mismos formatos
+                                    de archivo.
+
+                                    Por eso Música no se valida
+                                    contra "getFileType()".
+
+                                    La carpeta determina si el
+                                    archivo es Audio o Música.
+                                */
+
                                 if (
+                                    type !== "Música" &&
                                     detectedType !== type
+                                ) {
+
+                                    return null;
+
+                                }
+
+
+                                /*
+                                    Música acepta archivos
+                                    de audio.
+                                */
+
+                                if (
+                                    type === "Música" &&
+                                    ![
+                                        "mp3",
+                                        "wav",
+                                        "ogg",
+                                        "m4a",
+                                        "aac"
+                                    ].includes(
+                                        file.name
+                                            .split(".")
+                                            .pop()
+                                            .toLowerCase()
+                                    )
                                 ) {
 
                                     return null;
@@ -1230,10 +1244,6 @@ async function loadResources() {
         allResources =
             results.flat();
 
-
-        /*
-            Orden alfabético.
-        */
 
         allResources.sort(
             (a, b) =>
@@ -1309,6 +1319,8 @@ function createFilters() {
 
         "Audio",
 
+        "Música",
+
         "Video"
 
     ];
@@ -1335,7 +1347,7 @@ function createFilters() {
 
 
         button.textContent =
-            type;
+            `${getIcon(type)} ${type}`;
 
 
         button.onclick = () => {
@@ -1549,11 +1561,6 @@ function createResourceCard(
             "lazy";
 
 
-        /*
-            Al tocar la imagen también
-            se puede abrir.
-        */
-
         image.onclick = () => {
 
             window.open(
@@ -1601,6 +1608,45 @@ function createResourceCard(
 
                     Tu navegador no puede
                     reproducir este audio.
+
+                </audio>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       MÚSICA
+    ===================================================== */
+
+    else if (
+        resource.type === "Música"
+    ) {
+
+        preview.innerHTML = `
+
+            <div class="audio-preview">
+
+                <div class="audio-icon">
+                    🎵
+                </div>
+
+                <audio
+                    controls
+                    preload="none"
+                >
+
+                    <source
+                        src="${escapeAttribute(
+                            resource.rawUrl
+                        )}"
+                    >
+
+                    Tu navegador no puede
+                    reproducir esta música.
 
                 </audio>
 
@@ -1685,25 +1731,6 @@ function createResourceCard(
         "resource-content";
 
 
-    /*
-        ACCIONES SEGÚN EL TIPO
-
-        PDF:
-            Descargar
-
-        Imagen:
-            Ver + Descargar
-
-        Audio:
-            Descargar
-            (ya tiene reproductor)
-
-        Video:
-            Descargar
-            (ya tiene reproductor)
-    */
-
-
     let actions = "";
 
 
@@ -1769,11 +1796,12 @@ function createResourceCard(
 
 
     /* =========================
-       AUDIO
+       AUDIO / MÚSICA
     ========================= */
 
     else if (
-        resource.type === "Audio"
+        resource.type === "Audio" ||
+        resource.type === "Música"
     ) {
 
         actions = `
@@ -1821,6 +1849,10 @@ function createResourceCard(
     content.innerHTML = `
 
         <div class="resource-type">
+
+            ${getIcon(
+                resource.type
+            )}
 
             ${escapeHTML(
                 resource.type
@@ -1972,17 +2004,6 @@ async function loadNews() {
             );
 
 
-        /*
-            Ordenamos por nombre.
-
-            Ejemplo:
-
-            2026-09-15-nueva-clase.txt
-            2026-09-10-aviso.txt
-
-            Las más recientes quedan primero.
-        */
-
         textFiles.sort(
             (a, b) =>
                 b.name.localeCompare(
@@ -2118,16 +2139,6 @@ async function loadNews() {
    FUNCIÓN PARA NOTICIAS RECURSIVAS
 ========================================================= */
 
-/*
-    Esta función se utiliza SOLO para la carpeta
-    "noticias".
-
-    No tiene ninguna relación con "recursos".
-
-    Por tanto no puede introducir la portada
-    en la sección de recursos.
-*/
-
 async function getFilesRecursively(path) {
 
     const items =
@@ -2192,15 +2203,6 @@ function parseNews(
         text.split(
             /\r?\n/
         );
-
-
-    /*
-        Formato recomendado:
-
-        Título de la noticia
-        15/09/2026
-        Contenido de la noticia...
-    */
 
 
     let title =
