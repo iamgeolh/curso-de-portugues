@@ -19,6 +19,10 @@
 
     <style>
 
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -42,11 +46,14 @@
             --accent-dark: #056044;
 
             --shadow:
-                0 8px 30px
-                rgba(0, 0, 0, 0.06);
+                0 8px 30px rgba(0, 0, 0, 0.06);
 
             --radius: 18px;
 
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -71,22 +78,24 @@
 
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
         button,
         input {
-
             font: inherit;
+        }
 
+        button {
+            -webkit-tap-highlight-color: transparent;
         }
 
         a {
-
-            color:
-                inherit;
-
-            text-decoration:
-                none;
-
+            color: inherit;
+            text-decoration: none;
         }
+
 
         /* =====================================================
            HEADER
@@ -94,17 +103,14 @@
 
         header {
 
-            position:
-                sticky;
+            position: sticky;
 
-            top:
-                0;
+            top: 0;
 
-            z-index:
-                100;
+            z-index: 100;
 
             background:
-                rgba(255,255,255,0.92);
+                rgba(255, 255, 255, 0.92);
 
             backdrop-filter:
                 blur(14px);
@@ -156,11 +162,10 @@
         }
 
         .brand span {
-
             color:
                 var(--accent);
-
         }
+
 
         /* =====================================================
            MAIN
@@ -178,6 +183,7 @@
                 35px 22px 70px;
 
         }
+
 
         /* =====================================================
            HERO
@@ -241,8 +247,8 @@
             background:
                 linear-gradient(
                     to top,
-                    rgba(0,0,0,0.72),
-                    rgba(0,0,0,0.12) 70%
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.12) 70%
                 );
 
         }
@@ -292,15 +298,14 @@
 
         }
 
+
         /* =====================================================
            SECTIONS
         ===================================================== */
 
         section {
-
             margin-top:
                 55px;
-
         }
 
         .section-header {
@@ -345,6 +350,7 @@
 
         }
 
+
         /* =====================================================
            SEARCH
         ===================================================== */
@@ -380,7 +386,8 @@
                 none;
 
             transition:
-                0.2s;
+                border-color 0.2s,
+                box-shadow 0.2s;
 
         }
 
@@ -391,7 +398,7 @@
 
             box-shadow:
                 0 0 0 3px
-                rgba(8,127,91,0.08);
+                rgba(8, 127, 91, 0.08);
 
         }
 
@@ -412,17 +419,19 @@
             color:
                 var(--muted);
 
+            pointer-events:
+                none;
+
         }
 
+
         /* =====================================================
-           NEWS
+           NEWS CAROUSEL
         ===================================================== */
 
         .news-wrapper {
-
             position:
                 relative;
-
         }
 
         .news-container {
@@ -448,22 +457,14 @@
         }
 
         .news-container::-webkit-scrollbar {
-
             display:
                 none;
-
         }
 
-        /*
-            TARJETA COMPACTA DE NOTICIA
 
-            Ahora solamente muestra:
-            - fecha
-            - título
-
-            El contenido completo aparece
-            al abrir la noticia.
-        */
+        /* =====================================================
+           NEWS CARD
+        ===================================================== */
 
         .news-card {
 
@@ -480,13 +481,10 @@
                 var(--radius);
 
             padding:
-                24px;
+                22px;
 
             box-shadow:
                 var(--shadow);
-
-            min-height:
-                155px;
 
             display:
                 flex;
@@ -494,8 +492,8 @@
             flex-direction:
                 column;
 
-            justify-content:
-                center;
+            min-height:
+                150px;
 
             cursor:
                 pointer;
@@ -504,6 +502,9 @@
                 transform 0.2s,
                 box-shadow 0.2s,
                 border-color 0.2s;
+
+            user-select:
+                none;
 
         }
 
@@ -514,10 +515,10 @@
 
             box-shadow:
                 0 12px 35px
-                rgba(0,0,0,0.09);
+                rgba(0,0,0,0.08);
 
             border-color:
-                rgba(8,127,91,0.25);
+                #dcdcdc;
 
         }
 
@@ -543,43 +544,46 @@
                 0.7px;
 
             margin-bottom:
-                12px;
+                9px;
 
         }
 
         .news-title {
 
             font-size:
-                21px;
+                20px;
 
             line-height:
                 1.25;
 
-            letter-spacing:
-                -0.4px;
+            display:
+                -webkit-box;
 
-            overflow-wrap:
-                anywhere;
+            -webkit-line-clamp:
+                2;
+
+            -webkit-box-orient:
+                vertical;
+
+            overflow:
+                hidden;
 
         }
 
         /*
-            Indicador visual discreto de que
-            a notícia pode ser aberta.
+            Texto da notícia NÃO aparece
+            no cartão compacto.
         */
 
-        .news-open-hint {
-
-            margin-top:
-                14px;
-
-            font-size:
-                12px;
-
-            color:
-                var(--muted);
-
+        .news-text {
+            display:
+                none;
         }
+
+
+        /* =====================================================
+           NEWS CONTROLS
+        ===================================================== */
 
         .news-controls {
 
@@ -617,6 +621,9 @@
             transition:
                 0.2s;
 
+            flex-shrink:
+                0;
+
         }
 
         .circle-button:hover {
@@ -632,8 +639,9 @@
 
         }
 
+
         /* =====================================================
-           MODAL DA NOTÍCIA
+           NEWS MODAL
         ===================================================== */
 
         .news-modal {
@@ -647,6 +655,15 @@
             z-index:
                 1000;
 
+            background:
+                rgba(0,0,0,0.48);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+
             display:
                 flex;
 
@@ -659,24 +676,18 @@
             padding:
                 20px;
 
-            background:
-                rgba(0,0,0,0.55);
-
-            backdrop-filter:
-                blur(8px);
-
-            -webkit-backdrop-filter:
-                blur(8px);
-
             opacity:
                 0;
 
             visibility:
                 hidden;
 
+            pointer-events:
+                none;
+
             transition:
-                opacity 0.25s ease,
-                visibility 0.25s ease;
+                opacity 0.22s ease,
+                visibility 0.22s ease;
 
         }
 
@@ -688,21 +699,18 @@
             visibility:
                 visible;
 
+            pointer-events:
+                auto;
+
         }
 
         .news-modal-content {
 
-            position:
-                relative;
-
             width:
-                min(700px, 100%);
+                min(720px, 100%);
 
             max-height:
-                min(80vh, 750px);
-
-            overflow-y:
-                auto;
+                min(85vh, 850px);
 
             background:
                 var(--surface);
@@ -710,19 +718,25 @@
             border-radius:
                 24px;
 
-            padding:
-                35px;
-
             box-shadow:
                 0 25px 80px
-                rgba(0,0,0,0.25);
+                rgba(0,0,0,0.2);
+
+            overflow:
+                hidden;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
 
             transform:
-                translateY(20px)
+                translateY(18px)
                 scale(0.98);
 
             transition:
-                transform 0.25s ease;
+                transform 0.22s ease;
 
         }
 
@@ -735,16 +749,61 @@
 
         }
 
-        .news-modal-close {
+        .news-modal-header {
 
-            position:
-                absolute;
+            padding:
+                22px 22px 16px;
 
-            top:
-                16px;
+            border-bottom:
+                1px solid var(--border);
 
-            right:
-                16px;
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap:
+                18px;
+
+        }
+
+        .news-modal-date {
+
+            color:
+                var(--accent);
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.7px;
+
+            margin-bottom:
+                8px;
+
+        }
+
+        .news-modal-title {
+
+            font-size:
+                clamp(24px, 5vw, 34px);
+
+            line-height:
+                1.12;
+
+            letter-spacing:
+                -0.8px;
+
+        }
+
+        .news-close {
 
             width:
                 40px;
@@ -752,8 +811,8 @@
             height:
                 40px;
 
-            border-radius:
-                50%;
+            flex-shrink:
+                0;
 
             border:
                 1px solid var(--border);
@@ -761,11 +820,11 @@
             background:
                 #f7f7f5;
 
-            color:
-                var(--text);
+            border-radius:
+                50%;
 
             font-size:
-                25px;
+                22px;
 
             line-height:
                 1;
@@ -773,91 +832,44 @@
             cursor:
                 pointer;
 
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
             transition:
                 0.2s;
 
         }
 
-        .news-modal-close:hover {
+        .news-close:hover {
 
             background:
+                var(--accent);
+
+            border-color:
                 var(--accent);
 
             color:
                 white;
 
-            border-color:
-                var(--accent);
+        }
+
+        .news-modal-body {
+
+            padding:
+                22px;
+
+            overflow-y:
+                auto;
+
+            -webkit-overflow-scrolling:
+                touch;
 
         }
 
-        .modal-news-date {
+        .news-modal-text {
 
             color:
-                var(--accent);
+                #383838;
 
             font-size:
-                13px;
-
-            font-weight:
-                700;
-
-            letter-spacing:
-                0.8px;
-
-            margin-bottom:
-                10px;
-
-        }
-
-        .modal-news-title {
-
-            font-size:
-                clamp(27px, 5vw, 40px);
-
-            line-height:
-                1.12;
-
-            letter-spacing:
-                -1px;
-
-            padding-right:
-                45px;
-
-            margin-bottom:
-                25px;
-
-        }
-
-        .modal-news-divider {
-
-            height:
-                1px;
-
-            background:
-                var(--border);
-
-            margin-bottom:
-                25px;
-
-        }
-
-        .modal-news-body {
-
-            color:
-                #444;
-
-            font-size:
-                16px;
+                17px;
 
             line-height:
                 1.75;
@@ -870,8 +882,9 @@
 
         }
 
+
         /* =====================================================
-           FILTERS
+           RESOURCE FILTERS
         ===================================================== */
 
         .filters {
@@ -938,6 +951,7 @@
 
         }
 
+
         /* =====================================================
            RESOURCE GRID
         ===================================================== */
@@ -991,6 +1005,11 @@
                 var(--shadow);
 
         }
+
+
+        /* =====================================================
+           RESOURCE PREVIEW
+        ===================================================== */
 
         .resource-preview {
 
@@ -1049,6 +1068,11 @@
                 43px;
 
         }
+
+
+        /* =====================================================
+           RESOURCE CONTENT
+        ===================================================== */
 
         .resource-content {
 
@@ -1150,11 +1174,10 @@
         }
 
         .resource-button:hover {
-
             opacity:
                 0.86;
-
         }
+
 
         /* =====================================================
            AUDIO / MÚSICA
@@ -1189,6 +1212,7 @@
                 100%;
 
         }
+
 
         /* =====================================================
            EMPTY / LOADING
@@ -1265,6 +1289,7 @@
 
         }
 
+
         /* =====================================================
            FOOTER
         ===================================================== */
@@ -1290,6 +1315,7 @@
                 13px;
 
         }
+
 
         /* =====================================================
            RESPONSIVE
@@ -1343,7 +1369,10 @@
             }
 
             /*
-                EXATAMENTE 3 FILTROS POR LINHA
+                Exatamente 3 filtros por linha:
+
+                Todos | Docs | Imagens
+                Áudio | Música | Vídeo
             */
 
             .filters {
@@ -1362,7 +1391,7 @@
                     9px 5px;
 
                 font-size:
-                    13px;
+                    14px;
 
                 min-width:
                     0;
@@ -1383,45 +1412,10 @@
 
             }
 
-            /*
-                NOTÍCIAS
-            */
-
-            .news-card {
-
-                flex-basis:
-                    86vw;
-
-                min-height:
-                    135px;
-
-                padding:
-                    20px;
-
-            }
-
-            .news-title {
-
-                font-size:
-                    19px;
-
-            }
-
-            .news-open-hint {
-
-                margin-top:
-                    10px;
-
-            }
-
-            /*
-                MODAL
-            */
-
             .news-modal {
 
                 padding:
-                    12px;
+                    10px;
 
                 align-items:
                     flex-end;
@@ -1431,43 +1425,58 @@
             .news-modal-content {
 
                 max-height:
-                    88vh;
+                    92vh;
 
                 border-radius:
-                    22px;
+                    22px 22px 0 0;
+
+            }
+
+            .news-modal-header {
 
                 padding:
-                    28px 22px 30px;
+                    20px 18px 15px;
 
             }
 
-            .news-modal-close {
+            .news-modal-body {
 
-                top:
-                    12px;
-
-                right:
-                    12px;
+                padding:
+                    18px;
 
             }
 
-            .modal-news-title {
+            .news-modal-text {
 
                 font-size:
-                    28px;
-
-                padding-right:
-                    40px;
-
-            }
-
-            .modal-news-body {
-
-                font-size:
-                    15px;
+                    16px;
 
                 line-height:
                     1.7;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUÇÃO DE MOVIMENTO
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                scroll-behavior:
+                    auto !important;
+
+                transition:
+                    none !important;
+
+                animation:
+                    none !important;
 
             }
 
@@ -1555,7 +1564,6 @@
 
         </div>
 
-
         <div class="news-controls">
 
             <button
@@ -1620,12 +1628,15 @@
                 class="section-subtitle"
             >
                 Carregando recursos...
+
             </p>
 
         </div>
 
     </div>
 
+
+    <!-- BUSCA -->
 
     <div class="search-box">
 
@@ -1638,16 +1649,21 @@
             type="search"
             placeholder="Buscar recursos..."
             autocomplete="off"
+            spellcheck="false"
         >
 
     </div>
 
+
+    <!-- FILTROS -->
 
     <div
         id="filters"
         class="filters"
     ></div>
 
+
+    <!-- RECURSOS -->
 
     <div
         id="resourceGrid"
@@ -1675,53 +1691,53 @@
 
 
 <!-- =========================================================
-     MODAL DA NOTÍCIA
+     MODAL DE NOTÍCIA
 ========================================================= -->
 
 <div
     id="newsModal"
     class="news-modal"
-    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="newsModalTitle"
 >
 
-    <div
-        class="news-modal-content"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalNewsTitle"
-    >
+    <div class="news-modal-content">
 
-        <button
-            id="newsModalClose"
-            class="news-modal-close"
-            type="button"
-            aria-label="Fechar notícia"
-        >
-            ×
-        </button>
+        <div class="news-modal-header">
 
+            <div>
 
-        <div
-            id="modalNewsDate"
-            class="modal-news-date"
-        ></div>
+                <div
+                    id="newsModalDate"
+                    class="news-modal-date"
+                ></div>
 
+                <h2
+                    id="newsModalTitle"
+                    class="news-modal-title"
+                ></h2>
 
-        <h2
-            id="modalNewsTitle"
-            class="modal-news-title"
-        ></h2>
+            </div>
 
+            <button
+                id="newsClose"
+                class="news-close"
+                aria-label="Fechar notícia"
+            >
+                ×
+            </button>
 
-        <div
-            class="modal-news-divider"
-        ></div>
+        </div>
 
+        <div class="news-modal-body">
 
-        <div
-            id="modalNewsBody"
-            class="modal-news-body"
-        ></div>
+            <div
+                id="newsModalText"
+                class="news-modal-text"
+            ></div>
+
+        </div>
 
     </div>
 
@@ -1757,7 +1773,7 @@ const GITHUB_BRANCH =
 
 
 /*
-    ESTRUTURA:
+    ESTRUTURA DO REPOSITÓRIO
 
     recursos/
     ├── portada/
@@ -1767,8 +1783,9 @@ const GITHUB_BRANCH =
     ├── musica/
     └── video/
 
-    A pasta portada não é considerada
-    um recurso.
+    noticias/
+
+    A pasta portada NÃO faz parte dos recursos.
 */
 
 
@@ -1777,7 +1794,7 @@ const RESOURCE_FOLDERS = {
     "Imagens":
         "recursos/imagenes",
 
-    "Documentos":
+    "Docs":
         "recursos/pdf",
 
     "Áudio":
@@ -1808,14 +1825,8 @@ let currentFilter =
 let currentSearch =
     "";
 
-
-/*
-    Armazena todas as notícias
-    para poder abrir uma notícia
-    específica no modal.
-*/
-
-let allNews = [];
+let searchFrame =
+    null;
 
 
 /* =========================================================
@@ -1847,7 +1858,7 @@ async function githubContents(path) {
 
 
 /* =========================================================
-   ARQUIVOS DE UMA PASTA
+   OBTER ARQUIVOS DE UMA PASTA
 ========================================================= */
 
 async function getFilesFromFolder(path) {
@@ -1876,11 +1887,9 @@ function getFileType(filename) {
             .toLowerCase();
 
 
-    if (
-        extension === "pdf"
-    ) {
+    if (extension === "pdf") {
 
-        return "Documentos";
+        return "Docs";
 
     }
 
@@ -1983,7 +1992,7 @@ function getIcon(type) {
 
     switch (type) {
 
-        case "Documentos":
+        case "Docs":
             return "📄";
 
         case "Imagens":
@@ -2007,14 +2016,14 @@ function getIcon(type) {
 
 
 /* =========================================================
-   NOME VISÍVEL DO TIPO
+   NOME VISÍVEL
 ========================================================= */
 
 function getDisplayType(type) {
 
     switch (type) {
 
-        case "Documentos":
+        case "Docs":
             return "Docs";
 
         case "Imagens":
@@ -2080,6 +2089,10 @@ async function loadResources() {
                                     );
 
 
+                                /*
+                                    ÁUDIO
+                                */
+
                                 if (
                                     type === "Áudio"
                                 ) {
@@ -2095,6 +2108,10 @@ async function loadResources() {
 
                                 }
 
+
+                                /*
+                                    VÍDEO
+                                */
 
                                 if (
                                     type === "Vídeo"
@@ -2112,6 +2129,10 @@ async function loadResources() {
                                 }
 
 
+                                /*
+                                    IMAGENS
+                                */
+
                                 if (
                                     type === "Imagens"
                                 ) {
@@ -2128,13 +2149,17 @@ async function loadResources() {
                                 }
 
 
+                                /*
+                                    DOCUMENTOS
+                                */
+
                                 if (
-                                    type === "Documentos"
+                                    type === "Docs"
                                 ) {
 
                                     if (
                                         detectedType !==
-                                        "Documentos"
+                                        "Docs"
                                     ) {
 
                                         return null;
@@ -2143,6 +2168,13 @@ async function loadResources() {
 
                                 }
 
+
+                                /*
+                                    MÚSICA
+
+                                    Música também aceita
+                                    arquivos de áudio.
+                                */
 
                                 if (
                                     type === "Música"
@@ -2174,7 +2206,7 @@ async function loadResources() {
                                 }
 
 
-                                return {
+                                const resource = {
 
                                     name:
                                         prettyName(
@@ -2198,6 +2230,27 @@ async function loadResources() {
 
                                 };
 
+
+                                /*
+                                    OTIMIZAÇÃO IMPORTANTE
+
+                                    Guardamos o nome já
+                                    convertido para minúsculas.
+
+                                    Assim não precisamos executar
+                                    toLowerCase() toda vez
+                                    que o usuário digita.
+                                */
+
+                                resource.searchName =
+                                    resource.name
+                                        .toLocaleLowerCase(
+                                            "pt-BR"
+                                        );
+
+
+                                return resource;
+
                             })
 
                             .filter(Boolean);
@@ -2218,7 +2271,7 @@ async function loadResources() {
             (a, b) =>
                 a.name.localeCompare(
                     b.name,
-                    "pt",
+                    "pt-BR",
                     {
                         sensitivity:
                             "base"
@@ -2282,11 +2335,18 @@ function createFilters() {
         );
 
 
+    /*
+        EXATAMENTE 6 OPÇÕES
+
+        Todos | Docs | Imagens
+        Áudio | Música | Vídeo
+    */
+
     const types = [
 
         "Todos",
 
-        "Documentos",
+        "Docs",
 
         "Imagens",
 
@@ -2320,30 +2380,8 @@ function createFilters() {
             );
 
 
-        let visibleName;
-
-
-        if (
-            type === "Todos"
-        ) {
-
-            visibleName =
-                "Todos";
-
-        }
-
-        else {
-
-            visibleName =
-                getDisplayType(
-                    type
-                );
-
-        }
-
-
         button.textContent =
-            `${getIcon(type)} ${visibleName}`;
+            `${getIcon(type)} ${getDisplayType(type)}`;
 
 
         button.onclick = () => {
@@ -2383,8 +2421,19 @@ function createFilters() {
 
 
 /* =========================================================
-   MOSTRAR RECURSOS
+   MOSTRAR / FILTRAR RECURSOS
 ========================================================= */
+
+/*
+    IMPORTANTE:
+
+    Esta função agora NÃO recria as tarjetas
+    a cada letra da busca.
+
+    As tarjetas são criadas uma única vez.
+    Depois apenas mostramos ou ocultamos
+    as existentes.
+*/
 
 function renderResources() {
 
@@ -2394,96 +2443,209 @@ function renderResources() {
         );
 
 
-    let resources =
-        [...allResources];
+    /*
+        PRIMEIRA EXECUÇÃO:
+
+        Criamos todas as tarjetas somente
+        uma vez.
+    */
+
+    let cards =
+        grid.querySelectorAll(
+            ".resource-card"
+        );
 
 
     if (
-        currentFilter !== "Todos"
+        cards.length === 0 &&
+        allResources.length > 0
     ) {
 
-        resources =
-            resources.filter(
-                resource =>
-                    resource.type ===
-                    currentFilter
+        grid.innerHTML =
+            "";
+
+
+        const fragment =
+            document.createDocumentFragment();
+
+
+        allResources.forEach(
+            resource => {
+
+                const card =
+                    createResourceCard(
+                        resource
+                    );
+
+
+                /*
+                    Guardamos os dados
+                    diretamente no DOM.
+
+                    Isso deixa o filtro
+                    ainda mais rápido.
+                */
+
+                card.dataset.name =
+                    resource.searchName;
+
+                card.dataset.type =
+                    resource.type;
+
+
+                fragment.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        grid.appendChild(
+            fragment
+        );
+
+
+        cards =
+            grid.querySelectorAll(
+                ".resource-card"
             );
 
     }
 
 
-    if (
-        currentSearch.trim() !== ""
-    ) {
+    /*
+        TEXTO DA BUSCA
 
-        const search =
-            currentSearch
-                .toLowerCase()
-                .trim();
+        Só fazemos trim e lowercase
+        uma vez por pesquisa.
+    */
 
-
-        resources =
-            resources.filter(
-                resource =>
-                    resource.name
-                        .toLowerCase()
-                        .includes(search)
+    const search =
+        currentSearch
+            .trim()
+            .toLocaleLowerCase(
+                "pt-BR"
             );
 
-    }
 
+    let visibleCount =
+        0;
+
+
+    /*
+        FILTRAMOS AS TARJETAS EXISTENTES.
+
+        NÃO recriamos HTML.
+        NÃO recriamos áudios.
+        NÃO recriamos vídeos.
+        NÃO recriamos imagens.
+    */
+
+    cards.forEach(
+        card => {
+
+            const matchesType =
+                currentFilter === "Todos" ||
+                card.dataset.type ===
+                currentFilter;
+
+
+            const matchesSearch =
+                search === "" ||
+                card.dataset.name.includes(
+                    search
+                );
+
+
+            const visible =
+                matchesType &&
+                matchesSearch;
+
+
+            if (visible) {
+
+                card.style.display =
+                    "";
+
+                visibleCount++;
+
+            }
+
+            else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    /*
+        CONTADOR
+    */
 
     document.getElementById(
         "resourceCounter"
     ).textContent =
 
-        `${resources.length} recurso` +
+        `${visibleCount} recurso` +
 
         `${
-            resources.length === 1
+            visibleCount === 1
                 ? ""
                 : "s"
         }`;
 
 
+    /*
+        MENSAGEM DE SEM RESULTADOS
+    */
+
+    let noResults =
+        grid.querySelector(
+            ".search-no-results"
+        );
+
+
     if (
-        resources.length === 0
+        visibleCount === 0 &&
+        allResources.length > 0
     ) {
 
-        grid.innerHTML = `
+        if (!noResults) {
 
-            <div class="message">
-
-                Nenhum recurso encontrado.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML =
-        "";
-
-
-    resources.forEach(
-        resource => {
-
-            const card =
-                createResourceCard(
-                    resource
+            noResults =
+                document.createElement(
+                    "div"
                 );
 
+            noResults.className =
+                "message search-no-results";
+
+            noResults.textContent =
+                "Nenhum recurso encontrado.";
 
             grid.appendChild(
-                card
+                noResults
             );
 
         }
-    );
+
+
+        noResults.style.display =
+            "";
+
+    }
+
+    else if (noResults) {
+
+        noResults.style.display =
+            "none";
+
+    }
 
 }
 
@@ -2720,9 +2882,13 @@ function createResourceCard(
         "";
 
 
+    /* =====================================================
+       DOCUMENTOS
+    ===================================================== */
+
     if (
         resource.type ===
-        "Documentos"
+        "Docs"
     ) {
 
         actions = `
@@ -2741,6 +2907,10 @@ function createResourceCard(
 
     }
 
+
+    /* =====================================================
+       IMAGEM
+    ===================================================== */
 
     else if (
         resource.type ===
@@ -2775,6 +2945,10 @@ function createResourceCard(
     }
 
 
+    /* =====================================================
+       ÁUDIO / MÚSICA
+    ===================================================== */
+
     else if (
         resource.type === "Áudio" ||
         resource.type === "Música"
@@ -2796,6 +2970,10 @@ function createResourceCard(
 
     }
 
+
+    /* =====================================================
+       VÍDEO
+    ===================================================== */
 
     else if (
         resource.type ===
@@ -2922,8 +3100,19 @@ function escapeAttribute(text) {
 
 
 /* =========================================================
-   BUSCA DE RECURSOS
+   BUSCA — OTIMIZADA
 ========================================================= */
+
+/*
+    Não chamamos renderResources()
+    diretamente em cada evento de teclado.
+
+    requestAnimationFrame permite que o navegador
+    processe primeiro a entrada do teclado e depois
+    atualize os resultados.
+
+    Isso evita a sensação de teclado congelado.
+*/
 
 document
     .getElementById(
@@ -2937,7 +3126,28 @@ document
                 event.target.value;
 
 
-            renderResources();
+            if (
+                searchFrame !== null
+            ) {
+
+                cancelAnimationFrame(
+                    searchFrame
+                );
+
+            }
+
+
+            searchFrame =
+                requestAnimationFrame(
+                    () => {
+
+                        renderResources();
+
+                        searchFrame =
+                            null;
+
+                    }
+                );
 
         }
     );
@@ -2984,11 +3194,13 @@ async function loadNews() {
 
 
         /*
-            Criamos todas as notícias
-            antes de ordenar.
+            Primeiro lemos todas as notícias.
+
+            Depois ordenamos usando a data
+            presente na segunda linha.
         */
 
-        const loadedNews =
+        const newsList =
             [];
 
 
@@ -3013,9 +3225,7 @@ async function loadNews() {
                     );
 
 
-                if (
-                    !response.ok
-                ) {
+                if (!response.ok) {
 
                     continue;
 
@@ -3033,25 +3243,13 @@ async function loadNews() {
                     );
 
 
-                /*
-                    Guardamos também o
-                    caminho do arquivo.
-                */
+                news.rawUrl =
+                    rawUrl;
 
-                loadedNews.push({
 
-                    ...news,
-
-                    path:
-                        file.path,
-
-                    filename:
-                        file.name,
-
-                    rawUrl:
-                        rawUrl
-
-                });
+                newsList.push(
+                    news
+                );
 
             }
 
@@ -3069,40 +3267,30 @@ async function loadNews() {
 
 
         /*
-            =================================================
-            ORDENAR POR DATA
-            =================================================
+            ORDENAÇÃO POR DATA
 
-            A data é interpretada como:
+            DD/MM/YYYY
 
-            DD/MM/AAAA
-
-            Exemplo:
-
-            16/09/2026
-
-            As notícias mais recentes
-            aparecem primeiro.
+            Mais nova primeiro.
         */
 
-        loadedNews.sort(
+        newsList.sort(
             (a, b) => {
 
                 const dateA =
-                    parseDateForSort(
+                    parseDate(
                         a.date
                     );
 
-
                 const dateB =
-                    parseDateForSort(
+                    parseDate(
                         b.date
                     );
 
 
                 /*
-                    Se ambas tiverem
-                    datas válidas.
+                    Se as duas datas são válidas,
+                    usamos a data real.
                 */
 
                 if (
@@ -3110,14 +3298,17 @@ async function loadNews() {
                     dateB !== null
                 ) {
 
-                    return dateB - dateA;
+                    return (
+                        dateB.getTime() -
+                        dateA.getTime()
+                    );
 
                 }
 
 
                 /*
-                    Se apenas A tiver
-                    data válida.
+                    Se apenas A tem data válida,
+                    A vem primeiro.
                 */
 
                 if (
@@ -3130,8 +3321,8 @@ async function loadNews() {
 
 
                 /*
-                    Se apenas B tiver
-                    data válida.
+                    Se apenas B tem data válida,
+                    B vem primeiro.
                 */
 
                 if (
@@ -3144,28 +3335,29 @@ async function loadNews() {
 
 
                 /*
-                    Se nenhuma tiver data,
-                    usamos o nome do arquivo.
+                    Se nenhuma possui data válida,
+                    mantemos ordem alfabética.
                 */
 
-                return b.filename.localeCompare(
-                    a.filename
+                return a.title.localeCompare(
+                    b.title,
+                    "pt-BR",
+                    {
+                        sensitivity:
+                            "base"
+                    }
                 );
 
             }
         );
 
 
-        allNews =
-            loadedNews;
-
-
         /*
-            Nenhuma notícia
+            NENHUMA NOTÍCIA
         */
 
         if (
-            allNews.length === 0
+            newsList.length === 0
         ) {
 
             container.innerHTML = `
@@ -3183,29 +3375,138 @@ async function loadNews() {
         }
 
 
+        /*
+            CRIAR CARTÕES
+        */
+
         container.innerHTML =
             "";
 
 
-        /*
-            Criar cartões compactos.
-        */
+        const fragment =
+            document.createDocumentFragment();
 
-        allNews.forEach(
-            (news, index) => {
+
+        newsList.forEach(
+            news => {
 
                 const card =
-                    createNewsCard(
-                        news,
-                        index
+                    document.createElement(
+                        "article"
                     );
 
 
-                container.appendChild(
+                card.className =
+                    "news-card";
+
+
+                /*
+                    Guardamos os dados da notícia
+                    diretamente no cartão.
+
+                    Assim o clique não precisa
+                    fazer outra requisição.
+                */
+
+                card.newsData =
+                    news;
+
+
+                card.innerHTML = `
+
+                    <div class="news-date">
+
+                        ${escapeHTML(
+                            news.date
+                        )}
+
+                    </div>
+
+
+                    <h3 class="news-title">
+
+                        ${escapeHTML(
+                            news.title
+                        )}
+
+                    </h3>
+
+                `;
+
+
+                /*
+                    Abrir notícia completa
+                */
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        openNews(
+                            news
+                        );
+
+                    }
+                );
+
+
+                /*
+                    Acessibilidade
+
+                    Permite abrir com teclado.
+                */
+
+                card.setAttribute(
+                    "tabindex",
+                    "0"
+                );
+
+
+                card.setAttribute(
+                    "role",
+                    "button"
+                );
+
+
+                card.setAttribute(
+                    "aria-label",
+                    `Abrir notícia: ${news.title}`
+                );
+
+
+                card.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key ===
+                            "Enter" ||
+                            event.key ===
+                            " "
+                        ) {
+
+                            event.preventDefault();
+
+                            openNews(
+                                news
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                fragment.appendChild(
                     card
                 );
 
             }
+        );
+
+
+        container.appendChild(
+            fragment
         );
 
     }
@@ -3235,127 +3536,10 @@ async function loadNews() {
 
 
 /* =========================================================
-   CRIAR CARTÃO DE NOTÍCIA
+   INTERPRETAR DATA DD/MM/YYYY
 ========================================================= */
 
-function createNewsCard(
-    news,
-    index
-) {
-
-    const card =
-        document.createElement(
-            "article"
-        );
-
-
-    card.className =
-        "news-card";
-
-
-    /*
-        Apenas título e data
-        aparecem na pré-visualização.
-    */
-
-    card.innerHTML = `
-
-        <div class="news-date">
-
-            ${escapeHTML(
-                news.date
-            )}
-
-        </div>
-
-
-        <h3 class="news-title">
-
-            ${escapeHTML(
-                news.title
-            )}
-
-        </h3>
-
-
-        <div class="news-open-hint">
-
-            Tocar para ler a notícia
-
-        </div>
-
-    `;
-
-
-    /*
-        Ao clicar, abrimos
-        a notícia completa.
-    */
-
-    card.addEventListener(
-        "click",
-        () => {
-
-            openNewsModal(
-                index
-            );
-
-        }
-    );
-
-
-    /*
-        Acessibilidade:
-        permite abrir com teclado.
-    */
-
-    card.setAttribute(
-        "tabindex",
-        "0"
-    );
-
-
-    card.setAttribute(
-        "role",
-        "button"
-    );
-
-
-    card.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key ===
-                "Enter" ||
-                event.key ===
-                " "
-            ) {
-
-                event.preventDefault();
-
-                openNewsModal(
-                    index
-                );
-
-            }
-
-        }
-    );
-
-
-    return card;
-
-}
-
-
-/* =========================================================
-   INTERPRETAR DATA DD/MM/AAAA
-========================================================= */
-
-function parseDateForSort(
-    dateString
-) {
+function parseDate(dateString) {
 
     if (
         !dateString
@@ -3367,26 +3551,20 @@ function parseDateForSort(
 
 
     /*
-        Aceita:
+        Aceitamos exatamente:
 
         16/09/2026
-
-        e também:
-
-        16-09-2026
     */
 
     const match =
-        dateString
+        String(dateString)
             .trim()
             .match(
-                /^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})$/
+                /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
             );
 
 
-    if (
-        !match
-    ) {
+    if (!match) {
 
         return null;
 
@@ -3412,20 +3590,8 @@ function parseDateForSort(
 
 
     /*
-        Validação básica
+        JavaScript usa mês 0-11.
     */
-
-    if (
-        month < 1 ||
-        month > 12 ||
-        day < 1 ||
-        day > 31
-    ) {
-
-        return null;
-
-    }
-
 
     const date =
         new Date(
@@ -3436,8 +3602,11 @@ function parseDateForSort(
 
 
     /*
-        Evita datas como
-        31/02/2026.
+        Validação adicional.
+
+        Evita datas como:
+
+        40/99/2026
     */
 
     if (
@@ -3451,197 +3620,16 @@ function parseDateForSort(
     }
 
 
-    return date.getTime();
+    return date;
 
 }
-
-
-/* =========================================================
-   MODAL DA NOTÍCIA
-========================================================= */
-
-function openNewsModal(
-    index
-) {
-
-    const news =
-        allNews[index];
-
-
-    if (
-        !news
-    ) {
-
-        return;
-
-    }
-
-
-    const modal =
-        document.getElementById(
-            "newsModal"
-        );
-
-
-    const modalDate =
-        document.getElementById(
-            "modalNewsDate"
-        );
-
-
-    const modalTitle =
-        document.getElementById(
-            "modalNewsTitle"
-        );
-
-
-    const modalBody =
-        document.getElementById(
-            "modalNewsBody"
-        );
-
-
-    modalDate.textContent =
-        news.date;
-
-
-    modalTitle.textContent =
-        news.title;
-
-
-    modalBody.textContent =
-        news.content;
-
-
-    modal.classList.add(
-        "active"
-    );
-
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    /*
-        Impede o scroll da página
-        enquanto a notícia está aberta.
-    */
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    /*
-        Foco no botão fechar.
-    */
-
-    document
-        .getElementById(
-            "newsModalClose"
-        )
-        .focus();
-
-}
-
-
-/* =========================================================
-   FECHAR MODAL
-========================================================= */
-
-function closeNewsModal() {
-
-    const modal =
-        document.getElementById(
-            "newsModal"
-        );
-
-
-    modal.classList.remove(
-        "active"
-    );
-
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =========================================================
-   BOTÃO FECHAR
-========================================================= */
-
-document
-    .getElementById(
-        "newsModalClose"
-    )
-    .addEventListener(
-        "click",
-        closeNewsModal
-    );
-
-
-/* =========================================================
-   CLICAR FORA DA NOTÍCIA
-========================================================= */
-
-document
-    .getElementById(
-        "newsModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target.id ===
-                "newsModal"
-            ) {
-
-                closeNewsModal();
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   TECLA ESC
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
-            closeNewsModal();
-
-        }
-
-    }
-);
 
 
 /* =========================================================
    FUNÇÃO PARA NOTÍCIAS RECURSIVAS
 ========================================================= */
 
-async function getFilesRecursively(
-    path
-) {
+async function getFilesRecursively(path) {
 
     const items =
         await githubContents(
@@ -3697,28 +3685,20 @@ async function getFilesRecursively(
 
 
 /* =========================================================
-   INTERPRETAR NOTÍCIA TXT
+   INTERPRETAR NOTÍCIA
 ========================================================= */
 
 /*
-    FORMATO ESPERADO:
+    FORMATO DO TXT:
 
-    LINHA 1:
-    Título da notícia
+    Linha 1:
+    Título
 
-    LINHA 2:
-    16/09/2026
+    Linha 2:
+    Data
 
-    LINHA 3 EM DIANTE:
-    Conteúdo completo da notícia.
-
-    Exemplo:
-
-    Horário do Curso de Português
-    16/09/2026
-    Informamos aos alunos que o Curso de Português...
-    As aulas serão realizadas...
-    etc.
+    Linha 3 em diante:
+    Conteúdo
 */
 
 function parseNews(
@@ -3732,11 +3712,6 @@ function parseNews(
         );
 
 
-    /*
-        Título padrão caso
-        a primeira linha esteja vazia.
-    */
-
     let title =
         prettyName(
             filename
@@ -3748,7 +3723,7 @@ function parseNews(
 
 
     let content =
-        "";
+        text.trim();
 
 
     /*
@@ -3756,8 +3731,7 @@ function parseNews(
     */
 
     if (
-        lines.length > 0 &&
-        lines[0].trim() !== ""
+        lines.length > 0
     ) {
 
         title =
@@ -3768,6 +3742,10 @@ function parseNews(
 
     /*
         SEGUNDA LINHA = DATA
+
+        Formato:
+
+        DD/MM/YYYY
     */
 
     if (
@@ -3781,8 +3759,7 @@ function parseNews(
 
 
     /*
-        TERCEIRA LINHA EM DIANTE
-        = CONTEÚDO
+        LINHAS RESTANTES = CONTEÚDO
     */
 
     if (
@@ -3812,6 +3789,187 @@ function parseNews(
     };
 
 }
+
+
+/* =========================================================
+   ABRIR NOTÍCIA
+========================================================= */
+
+function openNews(news) {
+
+    const modal =
+        document.getElementById(
+            "newsModal"
+        );
+
+
+    const title =
+        document.getElementById(
+            "newsModalTitle"
+        );
+
+
+    const date =
+        document.getElementById(
+            "newsModalDate"
+        );
+
+
+    const content =
+        document.getElementById(
+            "newsModalText"
+        );
+
+
+    title.textContent =
+        news.title;
+
+
+    date.textContent =
+        news.date;
+
+
+    content.textContent =
+        news.content;
+
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    /*
+        Volta o conteúdo da notícia
+        para o início.
+    */
+
+    document.querySelector(
+        ".news-modal-body"
+    ).scrollTop = 0;
+
+
+    /*
+        Coloca o foco no botão fechar
+        para acessibilidade.
+    */
+
+    setTimeout(
+        () => {
+
+            document
+                .getElementById(
+                    "newsClose"
+                )
+                .focus();
+
+        },
+        100
+    );
+
+}
+
+
+/* =========================================================
+   FECHAR NOTÍCIA
+========================================================= */
+
+function closeNews() {
+
+    const modal =
+        document.getElementById(
+            "newsModal"
+        );
+
+
+    modal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   BOTÃO FECHAR
+========================================================= */
+
+document
+    .getElementById(
+        "newsClose"
+    )
+    .addEventListener(
+        "click",
+        closeNews
+    );
+
+
+/* =========================================================
+   FECHAR AO CLICAR FORA
+========================================================= */
+
+document
+    .getElementById(
+        "newsModal"
+    )
+    .addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target.id ===
+                "newsModal"
+            ) {
+
+                closeNews();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   FECHAR COM ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            const modal =
+                document.getElementById(
+                    "newsModal"
+                );
+
+
+            if (
+                modal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeNews();
+
+            }
+
+        }
+
+    }
+);
 
 
 /* =========================================================
@@ -3856,6 +4014,7 @@ loadNews();
 
 
 </script>
+
 
 </body>
 
