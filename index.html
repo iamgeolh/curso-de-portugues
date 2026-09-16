@@ -695,7 +695,6 @@
 
 </header>
 
-
 <main>
 
 <!-- =========================
@@ -727,7 +726,6 @@
     </div>
 
 </div>
-
 
 <!-- =========================
      NOTICIAS
@@ -771,7 +769,6 @@
 
     </div>
 
-
     <div
         id="newsContainer"
         class="news-container"
@@ -792,7 +789,6 @@
     </div>
 
 </section>
-
 
 <!-- =========================
      RECURSOS
@@ -819,7 +815,6 @@
 
     </div>
 
-
     <div class="search-box">
 
         <span class="search-icon">
@@ -835,12 +830,10 @@
 
     </div>
 
-
     <div
         id="filters"
         class="filters"
     ></div>
-
 
     <div
         id="resourceGrid"
@@ -865,13 +858,11 @@
 
 </main>
 
-
 <footer>
 
     Curso de Português · Recursos educativos
 
 </footer>
-
 
 <script>
 
@@ -884,7 +875,6 @@ const GITHUB_USER = "iamgeolh";
 const GITHUB_REPO = "curso-de-portugues";
 
 const GITHUB_BRANCH = "main";
-
 
 /*
     ESTRUCTURA DEL REPOSITORIO
@@ -911,7 +901,7 @@ const RESOURCE_FOLDERS = {
 
     "Imágenes": "recursos/imagenes",
 
-    "PDF": "recursos/pdf",
+    "Documentos": "recursos/pdf",
 
     "Audio": "recursos/audio",
 
@@ -921,9 +911,7 @@ const RESOURCE_FOLDERS = {
 
 };
 
-
 const NEWS_FOLDER = "noticias";
-
 
 /* =========================================================
    VARIABLES
@@ -934,7 +922,6 @@ let allResources = [];
 let currentFilter = "Todos";
 
 let currentSearch = "";
-
 
 /* =========================================================
    API DE GITHUB
@@ -963,7 +950,6 @@ async function githubContents(path) {
 
 }
 
-
 /* =========================================================
    OBTENER ARCHIVOS DE UNA CARPETA
 ========================================================= */
@@ -979,7 +965,6 @@ async function getFilesFromFolder(path) {
 
 }
 
-
 /* =========================================================
    TIPO DE ARCHIVO
 ========================================================= */
@@ -992,13 +977,11 @@ function getFileType(filename) {
             .pop()
             .toLowerCase();
 
-
     if (extension === "pdf") {
 
-        return "PDF";
+        return "Documentos";
 
     }
-
 
     if (
         [
@@ -1015,7 +998,6 @@ function getFileType(filename) {
 
     }
 
-
     if (
         [
             "mp3",
@@ -1029,7 +1011,6 @@ function getFileType(filename) {
         return "Audio";
 
     }
-
 
     if (
         [
@@ -1045,11 +1026,9 @@ function getFileType(filename) {
 
     }
 
-
     return null;
 
 }
-
 
 /* =========================================================
    NOMBRE BONITO
@@ -1062,20 +1041,17 @@ function prettyName(filename) {
             .split("/")
             .pop();
 
-
     name =
         name.replace(
             /\.[^/.]+$/,
             ""
         );
 
-
     name =
         name.replace(
             /[-_]+/g,
             " "
         );
-
 
     name =
         name.replace(
@@ -1084,11 +1060,9 @@ function prettyName(filename) {
                 letter.toUpperCase()
         );
 
-
     return name;
 
 }
-
 
 /* =========================================================
    ICONOS
@@ -1098,7 +1072,7 @@ function getIcon(type) {
 
     switch (type) {
 
-        case "PDF":
+        case "Documentos":
             return "📄";
 
         case "Imágenes":
@@ -1120,7 +1094,6 @@ function getIcon(type) {
 
 }
 
-
 /* =========================================================
    CARGAR RECURSOS
 ========================================================= */
@@ -1132,14 +1105,12 @@ async function loadResources() {
             "resourceGrid"
         );
 
-
     try {
 
         const folderEntries =
             Object.entries(
                 RESOURCE_FOLDERS
             );
-
 
         const results =
             await Promise.all(
@@ -1151,7 +1122,6 @@ async function loadResources() {
                                 folder
                             );
 
-
                         return files
                             .map(file => {
 
@@ -1159,19 +1129,6 @@ async function loadResources() {
                                     getFileType(
                                         file.name
                                     );
-
-
-                                /*
-                                    Las carpetas Audio y Música
-                                    utilizan los mismos formatos
-                                    de archivo.
-
-                                    Por eso Música no se valida
-                                    contra "getFileType()".
-
-                                    La carpeta determina si el
-                                    archivo es Audio o Música.
-                                */
 
                                 if (
                                     type !== "Música" &&
@@ -1181,12 +1138,6 @@ async function loadResources() {
                                     return null;
 
                                 }
-
-
-                                /*
-                                    Música acepta archivos
-                                    de audio.
-                                */
 
                                 if (
                                     type === "Música" &&
@@ -1207,7 +1158,6 @@ async function loadResources() {
                                     return null;
 
                                 }
-
 
                                 return {
 
@@ -1240,10 +1190,8 @@ async function loadResources() {
                 )
             );
 
-
         allResources =
             results.flat();
-
 
         allResources.sort(
             (a, b) =>
@@ -1256,7 +1204,6 @@ async function loadResources() {
                 )
         );
 
-
         createFilters();
 
         renderResources();
@@ -1268,7 +1215,6 @@ async function loadResources() {
             "Error cargando recursos:",
             error
         );
-
 
         grid.innerHTML = `
 
@@ -1286,7 +1232,6 @@ async function loadResources() {
 
         `;
 
-
         document.getElementById(
             "resourceCounter"
         ).textContent =
@@ -1295,7 +1240,6 @@ async function loadResources() {
     }
 
 }
-
 
 /* =========================================================
    FILTROS
@@ -1308,12 +1252,11 @@ function createFilters() {
             "filters"
         );
 
-
     const types = [
 
         "Todos",
 
-        "PDF",
+        "Documentos",
 
         "Imágenes",
 
@@ -1325,9 +1268,7 @@ function createFilters() {
 
     ];
 
-
     container.innerHTML = "";
-
 
     types.forEach(type => {
 
@@ -1335,7 +1276,6 @@ function createFilters() {
             document.createElement(
                 "button"
             );
-
 
         button.className =
             "filter-button" +
@@ -1345,16 +1285,13 @@ function createFilters() {
                     : ""
             );
 
-
         button.textContent =
             `${getIcon(type)} ${type}`;
-
 
         button.onclick = () => {
 
             currentFilter =
                 type;
-
 
             document
                 .querySelectorAll(
@@ -1366,16 +1303,13 @@ function createFilters() {
                     )
                 );
 
-
             button.classList.add(
                 "active"
             );
 
-
             renderResources();
 
         };
-
 
         container.appendChild(
             button
@@ -1384,7 +1318,6 @@ function createFilters() {
     });
 
 }
-
 
 /* =========================================================
    MOSTRAR RECURSOS
@@ -1397,10 +1330,8 @@ function renderResources() {
             "resourceGrid"
         );
 
-
     let resources =
         [...allResources];
-
 
     /*
         FILTRO POR TIPO
@@ -1419,7 +1350,6 @@ function renderResources() {
 
     }
 
-
     /*
         BUSCADOR
     */
@@ -1433,7 +1363,6 @@ function renderResources() {
                 .toLowerCase()
                 .trim();
 
-
         resources =
             resources.filter(
                 resource =>
@@ -1443,7 +1372,6 @@ function renderResources() {
             );
 
     }
-
 
     /*
         CONTADOR
@@ -1460,7 +1388,6 @@ function renderResources() {
                 ? ""
                 : "s"
         }`;
-
 
     /*
         SIN RESULTADOS
@@ -1484,9 +1411,7 @@ function renderResources() {
 
     }
 
-
     grid.innerHTML = "";
-
 
     resources.forEach(
         resource => {
@@ -1496,7 +1421,6 @@ function renderResources() {
                     resource
                 );
 
-
             grid.appendChild(
                 card
             );
@@ -1505,7 +1429,6 @@ function renderResources() {
     );
 
 }
-
 
 /* =========================================================
    CREAR TARJETA
@@ -1520,20 +1443,16 @@ function createResourceCard(
             "article"
         );
 
-
     card.className =
         "resource-card";
-
 
     const preview =
         document.createElement(
             "div"
         );
 
-
     preview.className =
         "resource-preview";
-
 
     /* =====================================================
        IMÁGENES
@@ -1548,18 +1467,14 @@ function createResourceCard(
                 "img"
             );
 
-
         image.src =
             resource.rawUrl;
-
 
         image.alt =
             resource.name;
 
-
         image.loading =
             "lazy";
-
 
         image.onclick = () => {
 
@@ -1571,13 +1486,11 @@ function createResourceCard(
 
         };
 
-
         preview.appendChild(
             image
         );
 
     }
-
 
     /* =====================================================
        AUDIO
@@ -1617,7 +1530,6 @@ function createResourceCard(
 
     }
 
-
     /* =====================================================
        MÚSICA
     ===================================================== */
@@ -1656,7 +1568,6 @@ function createResourceCard(
 
     }
 
-
     /* =====================================================
        VIDEO
     ===================================================== */
@@ -1670,24 +1581,19 @@ function createResourceCard(
                 "video"
             );
 
-
         video.src =
             resource.rawUrl;
-
 
         video.controls =
             true;
 
-
         video.preload =
             "metadata";
-
 
         video.setAttribute(
             "playsinline",
             ""
         );
-
 
         preview.appendChild(
             video
@@ -1695,9 +1601,8 @@ function createResourceCard(
 
     }
 
-
     /* =====================================================
-       PDF
+       DOCUMENTOS
     ===================================================== */
 
     else {
@@ -1716,7 +1621,6 @@ function createResourceCard(
 
     }
 
-
     /* =====================================================
        CONTENIDO
     ===================================================== */
@@ -1726,20 +1630,17 @@ function createResourceCard(
             "div"
         );
 
-
     content.className =
         "resource-content";
 
-
     let actions = "";
 
-
     /* =========================
-       PDF
+       DOCUMENTOS
     ========================= */
 
     if (
-        resource.type === "PDF"
+        resource.type === "Documentos"
     ) {
 
         actions = `
@@ -1757,7 +1658,6 @@ function createResourceCard(
         `;
 
     }
-
 
     /* =========================
        IMAGEN
@@ -1794,7 +1694,6 @@ function createResourceCard(
 
     }
 
-
     /* =========================
        AUDIO / MÚSICA
     ========================= */
@@ -1820,7 +1719,6 @@ function createResourceCard(
 
     }
 
-
     /* =========================
        VIDEO
     ========================= */
@@ -1845,7 +1743,6 @@ function createResourceCard(
 
     }
 
-
     content.innerHTML = `
 
         <div class="resource-type">
@@ -1860,7 +1757,6 @@ function createResourceCard(
 
         </div>
 
-
         <div class="resource-name">
 
             ${escapeHTML(
@@ -1868,7 +1764,6 @@ function createResourceCard(
             )}
 
         </div>
-
 
         <div class="resource-actions">
 
@@ -1878,21 +1773,17 @@ function createResourceCard(
 
     `;
 
-
     card.appendChild(
         preview
     );
-
 
     card.appendChild(
         content
     );
 
-
     return card;
 
 }
-
 
 /* =========================================================
    ESCAPAR HTML
@@ -1905,15 +1796,12 @@ function escapeHTML(text) {
             "div"
         );
 
-
     div.textContent =
         text;
-
 
     return div.innerHTML;
 
 }
-
 
 /* =========================================================
    ESCAPAR ATRIBUTOS
@@ -1941,7 +1829,6 @@ function escapeAttribute(text) {
 
 }
 
-
 /* =========================================================
    BUSCADOR
 ========================================================= */
@@ -1957,12 +1844,10 @@ document
             currentSearch =
                 event.target.value;
 
-
             renderResources();
 
         }
     );
-
 
 /* =========================================================
    NOTICIAS
@@ -1975,14 +1860,12 @@ async function loadNews() {
             "newsContainer"
         );
 
-
     try {
 
         const files =
             await getFilesRecursively(
                 NEWS_FOLDER
             );
-
 
         const textFiles =
             files.filter(
@@ -1994,7 +1877,6 @@ async function loadNews() {
                             .pop()
                             .toLowerCase();
 
-
                     return (
                         extension ===
                         "txt"
@@ -2003,14 +1885,12 @@ async function loadNews() {
                 }
             );
 
-
         textFiles.sort(
             (a, b) =>
                 b.name.localeCompare(
                     a.name
                 )
         );
-
 
         if (
             textFiles.length === 0
@@ -2030,9 +1910,7 @@ async function loadNews() {
 
         }
 
-
         container.innerHTML = "";
-
 
         for (
             const file
@@ -2046,16 +1924,13 @@ async function loadNews() {
                 `${GITHUB_BRANCH}/` +
                 `${file.path}`;
 
-
             const response =
                 await fetch(
                     rawUrl
                 );
 
-
             const text =
                 await response.text();
-
 
             const news =
                 parseNews(
@@ -2063,16 +1938,13 @@ async function loadNews() {
                     file.name
                 );
 
-
             const card =
                 document.createElement(
                     "article"
                 );
 
-
             card.className =
                 "news-card";
-
 
             card.innerHTML = `
 
@@ -2084,7 +1956,6 @@ async function loadNews() {
 
                 </div>
 
-
                 <h3 class="news-title">
 
                     ${escapeHTML(
@@ -2092,7 +1963,6 @@ async function loadNews() {
                     )}
 
                 </h3>
-
 
                 <p class="news-text">
 
@@ -2103,7 +1973,6 @@ async function loadNews() {
                 </p>
 
             `;
-
 
             container.appendChild(
                 card
@@ -2119,7 +1988,6 @@ async function loadNews() {
             error
         );
 
-
         container.innerHTML = `
 
             <div class="message">
@@ -2134,7 +2002,6 @@ async function loadNews() {
 
 }
 
-
 /* =========================================================
    FUNCIÓN PARA NOTICIAS RECURSIVAS
 ========================================================= */
@@ -2146,9 +2013,7 @@ async function getFilesRecursively(path) {
             path
         );
 
-
     let files = [];
-
 
     for (
         const item
@@ -2174,7 +2039,6 @@ async function getFilesRecursively(path) {
                     item.path
                 );
 
-
             files =
                 files.concat(
                     children
@@ -2184,11 +2048,9 @@ async function getFilesRecursively(path) {
 
     }
 
-
     return files;
 
 }
-
 
 /* =========================================================
    INTERPRETAR NOTICIA
@@ -2204,20 +2066,16 @@ function parseNews(
             /\r?\n/
         );
 
-
     let title =
         prettyName(
             filename
         );
 
-
     let date =
         "";
 
-
     let content =
         text.trim();
-
 
     if (
         lines.length > 0
@@ -2228,7 +2086,6 @@ function parseNews(
 
     }
 
-
     if (
         lines.length > 1
     ) {
@@ -2237,7 +2094,6 @@ function parseNews(
             lines[1].trim();
 
     }
-
 
     if (
         lines.length > 2
@@ -2251,7 +2107,6 @@ function parseNews(
 
     }
 
-
     return {
 
         title,
@@ -2263,7 +2118,6 @@ function parseNews(
     };
 
 }
-
 
 /* =========================================================
    CARRUSEL DE NOTICIAS
@@ -2278,11 +2132,9 @@ function scrollNews(
             "newsContainer"
         );
 
-
     const amount =
         container.clientWidth *
         0.8;
-
 
     container.scrollBy({
 
@@ -2295,7 +2147,6 @@ function scrollNews(
     });
 
 }
-
 
 /* =========================================================
    INICIAR
