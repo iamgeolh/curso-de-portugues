@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Curso de Português</title>
 
@@ -32,6 +38,7 @@
         }
 
         body {
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -42,7 +49,9 @@
                 sans-serif;
 
             background: var(--background);
+
             color: var(--text);
+
             line-height: 1.5;
         }
 
@@ -61,33 +70,46 @@
         ========================= */
 
         header {
+
             position: sticky;
+
             top: 0;
+
             z-index: 100;
 
-            background: rgba(255, 255, 255, 0.92);
+            background:
+                rgba(255, 255, 255, 0.92);
 
-            backdrop-filter: blur(14px);
+            backdrop-filter:
+                blur(14px);
 
-            border-bottom: 1px solid var(--border);
+            border-bottom:
+                1px solid var(--border);
         }
 
         .header-inner {
+
             max-width: 1150px;
+
             margin: auto;
 
             padding: 16px 22px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             gap: 20px;
         }
 
         .brand {
+
             font-size: 18px;
+
             font-weight: 700;
+
             letter-spacing: -0.3px;
         }
 
@@ -100,7 +122,9 @@
         ========================= */
 
         main {
+
             max-width: 1150px;
+
             margin: auto;
 
             padding: 35px 22px 70px;
@@ -111,7 +135,9 @@
         ========================= */
 
         .hero {
+
             position: relative;
+
             overflow: hidden;
 
             min-height: 370px;
@@ -121,23 +147,29 @@
             background: #222;
 
             display: flex;
+
             align-items: flex-end;
 
             box-shadow: var(--shadow);
         }
 
         .hero-image {
+
             position: absolute;
+
             inset: 0;
 
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
         }
 
         .hero-overlay {
+
             position: absolute;
+
             inset: 0;
 
             background:
@@ -149,7 +181,9 @@
         }
 
         .hero-content {
+
             position: relative;
+
             z-index: 2;
 
             padding: 40px;
@@ -158,7 +192,9 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(34px, 6vw, 58px);
+
+            font-size:
+                clamp(34px, 6vw, 58px);
 
             line-height: 1;
 
@@ -168,11 +204,13 @@
         }
 
         .hero-content p {
+
             font-size: 17px;
 
             max-width: 550px;
 
-            color: rgba(255,255,255,0.88);
+            color:
+                rgba(255,255,255,0.88);
         }
 
         /* =========================
@@ -184,9 +222,11 @@
         }
 
         .section-header {
+
             display: flex;
 
             justify-content: space-between;
+
             align-items: end;
 
             gap: 20px;
@@ -195,12 +235,14 @@
         }
 
         .section-title {
+
             font-size: 27px;
 
             letter-spacing: -0.7px;
         }
 
         .section-subtitle {
+
             color: var(--muted);
 
             font-size: 14px;
@@ -213,17 +255,21 @@
         ========================= */
 
         .search-box {
+
             position: relative;
 
             margin-bottom: 25px;
         }
 
         .search-box input {
+
             width: 100%;
 
-            padding: 15px 18px 15px 48px;
+            padding:
+                15px 18px 15px 48px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             border-radius: 14px;
 
@@ -235,7 +281,9 @@
         }
 
         .search-box input:focus {
-            border-color: var(--accent);
+
+            border-color:
+                var(--accent);
 
             box-shadow:
                 0 0 0 3px
@@ -243,12 +291,15 @@
         }
 
         .search-icon {
+
             position: absolute;
 
             left: 18px;
+
             top: 50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
             color: var(--muted);
         }
@@ -262,6 +313,7 @@
         }
 
         .news-container {
+
             display: flex;
 
             gap: 16px;
@@ -272,7 +324,8 @@
 
             scrollbar-width: none;
 
-            padding: 5px 2px 15px;
+            padding:
+                5px 2px 15px;
         }
 
         .news-container::-webkit-scrollbar {
@@ -280,17 +333,22 @@
         }
 
         .news-card {
-            flex: 0 0 min(360px, 85vw);
+
+            flex:
+                0 0 min(360px, 85vw);
 
             background: var(--surface);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            border-radius: var(--radius);
+            border-radius:
+                var(--radius);
 
             padding: 22px;
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                var(--shadow);
 
             display: flex;
 
@@ -300,6 +358,7 @@
         }
 
         .news-date {
+
             color: var(--accent);
 
             font-size: 12px;
@@ -314,6 +373,7 @@
         }
 
         .news-title {
+
             font-size: 20px;
 
             line-height: 1.25;
@@ -322,6 +382,7 @@
         }
 
         .news-text {
+
             color: var(--muted);
 
             font-size: 14px;
@@ -338,6 +399,7 @@
         }
 
         .news-controls {
+
             display: flex;
 
             gap: 8px;
@@ -346,12 +408,15 @@
         }
 
         .circle-button {
+
             width: 40px;
+
             height: 40px;
 
             border-radius: 50%;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             background: white;
 
@@ -361,11 +426,14 @@
         }
 
         .circle-button:hover {
-            background: var(--accent);
+
+            background:
+                var(--accent);
 
             color: white;
 
-            border-color: var(--accent);
+            border-color:
+                var(--accent);
         }
 
         /* =========================
@@ -373,9 +441,11 @@
         ========================= */
 
         .filters {
-            display: flex;
 
-            flex-wrap: wrap;
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
 
             gap: 9px;
 
@@ -383,11 +453,17 @@
         }
 
         .filter-button {
-            border: 1px solid var(--border);
 
-            background: var(--surface);
+            border:
+                1px solid var(--border);
 
-            padding: 9px 15px;
+            background:
+                var(--surface);
+
+            padding:
+                10px 8px;
+
+            min-height: 46px;
 
             border-radius: 999px;
 
@@ -396,13 +472,20 @@
             color: #555;
 
             transition: 0.2s;
+
+            white-space: nowrap;
+
+            text-align: center;
         }
 
         .filter-button:hover,
         .filter-button.active {
-            background: var(--accent);
 
-            border-color: var(--accent);
+            background:
+                var(--accent);
+
+            border-color:
+                var(--accent);
 
             color: white;
         }
@@ -412,6 +495,7 @@
         ========================= */
 
         .resource-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -424,11 +508,15 @@
         }
 
         .resource-card {
-            background: var(--surface);
 
-            border: 1px solid var(--border);
+            background:
+                var(--surface);
 
-            border-radius: var(--radius);
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
 
             overflow: hidden;
 
@@ -442,12 +530,16 @@
         }
 
         .resource-card:hover {
-            transform: translateY(-3px);
 
-            box-shadow: var(--shadow);
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                var(--shadow);
         }
 
         .resource-preview {
+
             height: 145px;
 
             background: #f1f1ef;
@@ -455,13 +547,16 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             overflow: hidden;
         }
 
         .resource-preview img {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -470,7 +565,9 @@
         }
 
         .resource-preview video {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -481,13 +578,16 @@
         }
 
         .resource-content {
+
             padding: 18px;
         }
 
         .resource-type {
+
             font-size: 11px;
 
-            color: var(--accent);
+            color:
+                var(--accent);
 
             font-weight: 700;
 
@@ -499,6 +599,7 @@
         }
 
         .resource-name {
+
             font-size: 17px;
 
             font-weight: 650;
@@ -509,19 +610,23 @@
         }
 
         .resource-actions {
+
             display: flex;
 
             gap: 8px;
         }
 
         .resource-button {
+
             flex: 1;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             background: white;
 
-            padding: 9px 10px;
+            padding:
+                9px 10px;
 
             border-radius: 10px;
 
@@ -535,11 +640,14 @@
         }
 
         .resource-button.primary {
-            background: var(--accent);
+
+            background:
+                var(--accent);
 
             color: white;
 
-            border-color: var(--accent);
+            border-color:
+                var(--accent);
         }
 
         .resource-button:hover {
@@ -547,16 +655,18 @@
         }
 
         /* =========================
-           AUDIO / MÚSICA
+           ÁUDIO / MÚSICA
         ========================= */
 
         .audio-preview {
+
             width: 100%;
 
             padding: 18px;
         }
 
         .audio-icon {
+
             text-align: center;
 
             font-size: 38px;
@@ -573,35 +683,47 @@
         ========================= */
 
         .message {
-            padding: 35px 20px;
+
+            padding:
+                35px 20px;
 
             text-align: center;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            background: var(--surface);
+            background:
+                var(--surface);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            border-radius: var(--radius);
+            border-radius:
+                var(--radius);
         }
 
         .loading {
+
             display: flex;
 
             justify-content: center;
+
             align-items: center;
 
             gap: 10px;
         }
 
         .spinner {
+
             width: 18px;
+
             height: 18px;
 
-            border: 2px solid #ddd;
+            border:
+                2px solid #ddd;
 
-            border-top-color: var(--accent);
+            border-top-color:
+                var(--accent);
 
             border-radius: 50%;
 
@@ -612,7 +734,8 @@
         @keyframes spin {
 
             to {
-                transform: rotate(360deg);
+                transform:
+                    rotate(360deg);
             }
 
         }
@@ -622,15 +745,19 @@
         ========================= */
 
         footer {
-            border-top: 1px solid var(--border);
+
+            border-top:
+                1px solid var(--border);
 
             background: white;
 
             text-align: center;
 
-            padding: 25px 20px;
+            padding:
+                25px 20px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
             font-size: 13px;
         }
@@ -642,10 +769,13 @@
         @media (max-width: 600px) {
 
             main {
-                padding: 20px 14px 50px;
+
+                padding:
+                    20px 14px 50px;
             }
 
             .hero {
+
                 min-height: 330px;
 
                 border-radius: 22px;
@@ -656,7 +786,9 @@
             }
 
             .hero-content h1 {
-                letter-spacing: -1.5px;
+
+                letter-spacing:
+                    -1.5px;
             }
 
             section {
@@ -667,8 +799,34 @@
                 font-size: 24px;
             }
 
+            /*
+                Mantemos exatamente
+                3 filtros por linha:
+                3 + 3
+            */
+
+            .filters {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 8px;
+            }
+
+            .filter-button {
+
+                padding:
+                    9px 5px;
+
+                font-size: 14px;
+
+                min-width: 0;
+            }
+
             .resource-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
 
             .resource-preview {
@@ -688,7 +846,10 @@
     <div class="header-inner">
 
         <div class="brand">
-            Curso de <span>Português</span>
+
+            Curso de
+            <span>Português</span>
+
         </div>
 
     </div>
@@ -899,15 +1060,20 @@ const GITHUB_BRANCH = "main";
 
 const RESOURCE_FOLDERS = {
 
-    "Imagens": "recursos/imagenes",
+    "Imagens":
+        "recursos/imagenes",
 
-    "Documentos": "recursos/pdf",
+    "Documentos":
+        "recursos/pdf",
 
-    "Áudio": "recursos/audio",
+    "Áudio":
+        "recursos/audio",
 
-    "Música": "recursos/musica",
+    "Música":
+        "recursos/musica",
 
-    "Vídeo": "recursos/video"
+    "Vídeo":
+        "recursos/video"
 
 };
 
@@ -960,7 +1126,8 @@ async function getFilesFromFolder(path) {
         await githubContents(path);
 
     return items.filter(
-        item => item.type === "file"
+        item =>
+            item.type === "file"
     );
 
 }
@@ -1095,6 +1262,36 @@ function getIcon(type) {
 }
 
 /* =========================================================
+   NOME VISÍVEL DO TIPO
+========================================================= */
+
+function getDisplayType(type) {
+
+    switch (type) {
+
+        case "Documentos":
+            return "Docs";
+
+        case "Imagens":
+            return "Imagens";
+
+        case "Áudio":
+            return "Áudio";
+
+        case "Música":
+            return "Música";
+
+        case "Vídeo":
+            return "Vídeo";
+
+        default:
+            return type;
+
+    }
+
+}
+
+/* =========================================================
    CARREGAR RECURSOS
 ========================================================= */
 
@@ -1114,7 +1311,9 @@ async function loadResources() {
 
         const results =
             await Promise.all(
+
                 folderEntries.map(
+
                     async ([type, folder]) => {
 
                         const files =
@@ -1123,6 +1322,7 @@ async function loadResources() {
                             );
 
                         return files
+
                             .map(file => {
 
                                 const detectedType =
@@ -1130,32 +1330,111 @@ async function loadResources() {
                                         file.name
                                     );
 
+                                /*
+                                    Áudio
+                                */
+
                                 if (
-                                    type !== "Música" &&
-                                    detectedType !== type
+                                    type === "Áudio"
                                 ) {
 
-                                    return null;
+                                    if (
+                                        detectedType !==
+                                        "Áudio"
+                                    ) {
+
+                                        return null;
+
+                                    }
 
                                 }
 
+                                /*
+                                    Vídeo
+                                */
+
                                 if (
-                                    type === "Música" &&
-                                    ![
-                                        "mp3",
-                                        "wav",
-                                        "ogg",
-                                        "m4a",
-                                        "aac"
-                                    ].includes(
+                                    type === "Vídeo"
+                                ) {
+
+                                    if (
+                                        detectedType !==
+                                        "Vídeo"
+                                    ) {
+
+                                        return null;
+
+                                    }
+
+                                }
+
+                                /*
+                                    Imagens
+                                */
+
+                                if (
+                                    type === "Imagens"
+                                ) {
+
+                                    if (
+                                        detectedType !==
+                                        "Imagens"
+                                    ) {
+
+                                        return null;
+
+                                    }
+
+                                }
+
+                                /*
+                                    Documentos
+                                */
+
+                                if (
+                                    type === "Documentos"
+                                ) {
+
+                                    if (
+                                        detectedType !==
+                                        "Documentos"
+                                    ) {
+
+                                        return null;
+
+                                    }
+
+                                }
+
+                                /*
+                                    Música
+                                */
+
+                                if (
+                                    type === "Música"
+                                ) {
+
+                                    const extension =
                                         file.name
                                             .split(".")
                                             .pop()
-                                            .toLowerCase()
-                                    )
-                                ) {
+                                            .toLowerCase();
 
-                                    return null;
+                                    if (
+                                        ![
+                                            "mp3",
+                                            "wav",
+                                            "ogg",
+                                            "m4a",
+                                            "aac"
+                                        ].includes(
+                                            extension
+                                        )
+                                    ) {
+
+                                        return null;
+
+                                    }
 
                                 }
 
@@ -1184,24 +1463,30 @@ async function loadResources() {
                                 };
 
                             })
+
                             .filter(Boolean);
 
                     }
+
                 )
+
             );
 
         allResources =
             results.flat();
 
         allResources.sort(
+
             (a, b) =>
                 a.name.localeCompare(
                     b.name,
                     "pt",
                     {
-                        sensitivity: "base"
+                        sensitivity:
+                            "base"
                     }
                 )
+
         );
 
         createFilters();
@@ -1209,6 +1494,7 @@ async function loadResources() {
         renderResources();
 
     }
+
     catch (error) {
 
         console.error(
@@ -1252,6 +1538,18 @@ function createFilters() {
             "filters"
         );
 
+    /*
+        IMPORTANTE:
+
+        São exatamente 6 opções.
+
+        Linha 1:
+        Todos | Docs | Imagens
+
+        Linha 2:
+        Áudio | Música | Vídeo
+    */
+
     const types = [
 
         "Todos",
@@ -1285,8 +1583,31 @@ function createFilters() {
                     : ""
             );
 
+        /*
+            Texto visível
+        */
+
+        let visibleName;
+
+        if (
+            type === "Todos"
+        ) {
+
+            visibleName = "Todos";
+
+        }
+
+        else {
+
+            visibleName =
+                getDisplayType(
+                    type
+                );
+
+        }
+
         button.textContent =
-            `${getIcon(type)} ${type}`;
+            `${getIcon(type)} ${visibleName}`;
 
         button.onclick = () => {
 
@@ -1351,7 +1672,7 @@ function renderResources() {
     }
 
     /*
-        BUSCADOR
+        BUSCA
     */
 
     if (
@@ -1459,7 +1780,8 @@ function createResourceCard(
     ===================================================== */
 
     if (
-        resource.type === "Imagens"
+        resource.type ===
+        "Imagens"
     ) {
 
         const image =
@@ -1497,7 +1819,8 @@ function createResourceCard(
     ===================================================== */
 
     else if (
-        resource.type === "Áudio"
+        resource.type ===
+        "Áudio"
     ) {
 
         preview.innerHTML = `
@@ -1519,7 +1842,7 @@ function createResourceCard(
                         )}"
                     >
 
-                    Seu navegador não pode
+                    Seu navegador não consegue
                     reproduzir este áudio.
 
                 </audio>
@@ -1535,7 +1858,8 @@ function createResourceCard(
     ===================================================== */
 
     else if (
-        resource.type === "Música"
+        resource.type ===
+        "Música"
     ) {
 
         preview.innerHTML = `
@@ -1557,7 +1881,7 @@ function createResourceCard(
                         )}"
                     >
 
-                    Seu navegador não pode
+                    Seu navegador não consegue
                     reproduzir esta música.
 
                 </audio>
@@ -1573,7 +1897,8 @@ function createResourceCard(
     ===================================================== */
 
     else if (
-        resource.type === "Vídeo"
+        resource.type ===
+        "Vídeo"
     ) {
 
         const video =
@@ -1640,7 +1965,8 @@ function createResourceCard(
     ========================= */
 
     if (
-        resource.type === "Documentos"
+        resource.type ===
+        "Documentos"
     ) {
 
         actions = `
@@ -1664,7 +1990,8 @@ function createResourceCard(
     ========================= */
 
     else if (
-        resource.type === "Imagens"
+        resource.type ===
+        "Imagens"
     ) {
 
         actions = `
@@ -1724,7 +2051,8 @@ function createResourceCard(
     ========================= */
 
     else if (
-        resource.type === "Vídeo"
+        resource.type ===
+        "Vídeo"
     ) {
 
         actions = `
@@ -1752,7 +2080,9 @@ function createResourceCard(
             )}
 
             ${escapeHTML(
-                resource.type
+                getDisplayType(
+                    resource.type
+                )
             )}
 
         </div>
@@ -1810,18 +2140,22 @@ function escapeHTML(text) {
 function escapeAttribute(text) {
 
     return String(text)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
@@ -1830,7 +2164,7 @@ function escapeAttribute(text) {
 }
 
 /* =========================================================
-   BUSCADOR
+   BUSCA
 ========================================================= */
 
 document
@@ -1886,10 +2220,12 @@ async function loadNews() {
             );
 
         textFiles.sort(
+
             (a, b) =>
                 b.name.localeCompare(
                     a.name
                 )
+
         );
 
         if (
@@ -1981,6 +2317,7 @@ async function loadNews() {
         }
 
     }
+
     catch (error) {
 
         console.error(
@@ -2021,7 +2358,8 @@ async function getFilesRecursively(path) {
     ) {
 
         if (
-            item.type === "file"
+            item.type ===
+            "file"
         ) {
 
             files.push(
@@ -2031,7 +2369,8 @@ async function getFilesRecursively(path) {
         }
 
         else if (
-            item.type === "dir"
+            item.type ===
+            "dir"
         ) {
 
             const children =
@@ -2159,4 +2498,5 @@ loadNews();
 </script>
 
 </body>
+
 </html>
