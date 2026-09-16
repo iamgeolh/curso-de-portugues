@@ -396,6 +396,8 @@
             color: #555;
 
             transition: 0.2s;
+
+            white-space: nowrap;
         }
 
         .filter-button:hover,
@@ -665,6 +667,39 @@
 
             .section-title {
                 font-size: 24px;
+            }
+
+            /* =========================
+               FILTROS: 3 × 2
+            ========================= */
+
+            .filters {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+                gap: 9px;
+
+                width: 100%;
+            }
+
+            .filter-button {
+                width: 100%;
+
+                padding: 10px 5px;
+
+                font-size: 14px;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                text-align: center;
+
+                min-width: 0;
             }
 
             .resource-grid {
@@ -1095,6 +1130,39 @@ function getIcon(type) {
 }
 
 /* =========================================================
+   ETIQUETAS DE FILTROS
+========================================================= */
+
+function getFilterLabel(type) {
+
+    switch (type) {
+
+        case "Documentos":
+            return "Docs";
+
+        case "Imágenes":
+            return "Imágenes";
+
+        case "Audio":
+            return "Audio";
+
+        case "Música":
+            return "Música";
+
+        case "Video":
+            return "Video";
+
+        case "Todos":
+            return "Todos";
+
+        default:
+            return type;
+
+    }
+
+}
+
+/* =========================================================
    CARGAR RECURSOS
 ========================================================= */
 
@@ -1286,7 +1354,7 @@ function createFilters() {
             );
 
         button.textContent =
-            `${getIcon(type)} ${type}`;
+            `${getIcon(type)} ${getFilterLabel(type)}`;
 
         button.onclick = () => {
 
